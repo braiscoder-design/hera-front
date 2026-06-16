@@ -1,0 +1,69 @@
+{
+  "nav.home": "Inicio",
+  "nav.about": "Nosotras",
+  "nav.services": "Servicios",
+  "nav.gallery": "Galería",
+  "nav.contact": "Contacto",
+  "nav.book": "Reservar",
+
+  "hero.tagline": "Less drama, more lashes.",
+  "hero.subtitle": "Especialistas en extensiones de pestañas, diseño de mirada y cuidado de manos y pies en A Coruña.",
+  "hero.cta": "Descubre nuestros servicios",
+  "hero.book": "Reservar cita",
+
+  "about.label": "Quiénes somos",
+  "about.title": "El arte de realzar tu belleza natural",
+  "about.body": "En Hera The Beauty Studio creemos que cada mirada tiene su propia historia. Somos un equipo de profesionales especializadas en estética ocular, cuidado de cejas y tratamientos de manos y pies. Nuestro estudio, ubicado en el corazón de A Coruña, es un espacio pensado para que te sientas cuidada, cómoda y completamente tú.",
+  "about.values.1": "Precisión",
+  "about.values.2": "Cuidado",
+  "about.values.3": "Naturalidad",
+
+  "services.label": "Nuestros servicios",
+  "services.title": "Todo lo que necesitas para brillar",
+  "services.subtitle": "Tratamientos personalizados adaptados a tu mirada y estilo de vida.",
+
+  "services.lashes.title": "Pestañas",
+  "services.lashes.desc": "Extensiones volumen, pelo a pelo, híbridas y lifting de pestañas. Realzamos tu mirada de forma natural y duradera.",
+  "services.lashes.items": "Extensiones pelo a pelo · Volumen ruso · Híbridas · Lifting & tinte",
+
+  "services.brows.title": "Cejas",
+  "services.brows.desc": "Diseño, laminado y henna de cejas. Definimos tu arco para enmarcar tu mirada con precisión milimétrica.",
+  "services.brows.items": "Diseño de cejas · Laminado · Henna · Depilación",
+
+  "services.manicure.title": "Manicura",
+  "services.manicure.desc": "Desde la manicura semipermanente hasta nail art a medida. Tus manos merecen atención al detalle.",
+  "services.manicure.items": "Semipermanente · Gel · Acrílico · Nail art",
+
+  "services.pedicure.title": "Pedicura",
+  "services.pedicure.desc": "Cuidado completo para tus pies con tratamientos de hidratación y esmaltado duradero.",
+  "services.pedicure.items": "Pedicura completa · Semipermanente · Tratamiento hidratante",
+
+  "values.tranquility": "Tranquilidad",
+  "values.precision": "Precisión",
+  "values.beauty": "Belleza",
+
+  "gallery.label": "Galería",
+  "gallery.title": "Nuestro trabajo habla por nosotras",
+  "gallery.subtitle": "Síguenos en Instagram para ver nuestras últimas creaciones.",
+  "gallery.cta": "Ver en Instagram",
+
+  "contact.label": "Visítanos",
+  "contact.title": "Te esperamos en A Coruña",
+  "contact.address": "Rúa Juan Flórez, 72 Bajo",
+  "contact.city": "15005 · A Coruña",
+  "contact.phone": "698 119 786",
+  "contact.email": "herathebeautystudio@gmail.com",
+  "contact.hours.title": "Horario",
+  "contact.hours.weekdays": "Lunes a Viernes: 10:00 – 20:00",
+  "contact.hours.saturday": "Sábado: 10:00 – 14:00",
+  "contact.whatsapp": "Escríbenos por WhatsApp",
+  "contact.directions": "Cómo llegar",
+
+  "footer.tagline": "Less drama, more lashes.",
+  "footer.rights": "© 2025 Hera The Beauty Studio. Todos los derechos reservados.",
+  "footer.legal": "Aviso legal",
+  "footer.privacy": "Privacidad",
+  "footer.cookies": "Cookies",
+
+  "lang.switch": "Galego"
+}

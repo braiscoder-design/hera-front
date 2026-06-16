@@ -1,0 +1,275 @@
+.hero {
+  position: relative;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  padding-block-start: 6rem;
+}
+
+/* ── Background shapes ── */
+.bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.shape1 {
+  position: absolute;
+  top: -10%;
+  right: -5%;
+  width: 55vw;
+  max-width: 700px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, var(--color-blush) 0%, transparent 70%);
+  opacity: 0.45;
+}
+
+.shape2 {
+  position: absolute;
+  bottom: 0;
+  left: -8%;
+  width: 40vw;
+  max-width: 500px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, var(--color-accent-soft) 0%, transparent 70%);
+  opacity: 0.5;
+}
+
+/* ── Layout ── */
+.inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  min-height: calc(100dvh - 6rem);
+  padding-block: var(--spacing-lg);
+}
+
+/* ── Content ── */
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.label {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.tagline {
+  font-family: var(--font-serif);
+  font-size: clamp(2.8rem, 6vw, 5.5rem);
+  font-weight: 300;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  color: var(--color-text);
+}
+
+.subtitle {
+  font-size: 1rem;
+  font-weight: 300;
+  color: var(--color-text-mid);
+  max-width: 38ch;
+  line-height: 1.75;
+}
+
+.ctas {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  padding-block-start: 0.5rem;
+}
+
+/* ── Visual ── */
+.visual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.imageStack {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  /* Safe margin so the floating card doesn't overflow the page */
+  margin-inline-start: 2rem;
+}
+
+.imageMain {
+  width: 100%;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  display: block;
+}
+
+.imageCard {
+  position: absolute;
+  bottom: -2rem;
+  left: -2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+  padding: 2rem 1.8rem;
+  background: rgba(247, 243, 238, 0.92);
+  backdrop-filter: blur(12px);
+  border-radius: var(--radius-md);
+  box-shadow: 0 8px 32px rgba(42, 37, 32, 0.12);
+  width: 180px;
+}
+
+.logoCircle {
+  position: relative;
+  width: 130px;
+  height: 130px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logoCircle span {
+  font-family: var(--font-serif);
+  font-size: 2.8rem;
+  font-weight: 400;
+  color: var(--color-text);
+  z-index: 1;
+}
+
+.circleText {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  color: var(--color-text-light);
+  animation: spin 20s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.cardTag {
+  text-align: center;
+}
+.cardTag span {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-mid);
+}
+.cardTag em {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.5rem;
+  color: var(--color-text);
+}
+
+/* ── Scroll hint ── */
+.scrollHint {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+.scrollHint span {
+  display: block;
+  width: 1px;
+  height: 60px;
+  background: linear-gradient(to bottom, transparent, var(--color-accent));
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.3; transform: scaleY(1); }
+  50% { opacity: 1; transform: scaleY(1.1); }
+}
+
+/* ── Tablet (769–1024px) ── */
+@media (max-width: 1024px) {
+  .inner {
+    gap: 2.5rem;
+  }
+  .imageStack {
+    max-width: 360px;
+    margin-inline-start: 1.5rem;
+  }
+  .imageCard {
+    width: 160px;
+    padding: 1.5rem 1.2rem;
+    gap: 1rem;
+    left: -1.5rem;
+    bottom: -1.5rem;
+  }
+  .logoCircle {
+    width: 100px;
+    height: 100px;
+  }
+  .logoCircle span { font-size: 2.2rem; }
+}
+
+/* ── Mobile (≤768px) ── */
+@media (max-width: 768px) {
+  .hero {
+    padding-block-start: 5rem;
+    min-height: auto;
+    padding-block-end: 3rem;
+  }
+  .inner {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    min-height: auto;
+    padding-block: 2rem 1rem;
+  }
+  .visual { order: -1; }
+  .imageStack {
+    max-width: 300px;
+    margin-inline: auto;
+    /* Push right so the floating card fits on the left */
+    margin-inline-start: 2.5rem;
+  }
+  .imageCard {
+    width: 150px;
+    padding: 1.2rem 1rem;
+    left: -2rem;
+    bottom: -1.5rem;
+  }
+  .logoCircle { width: 90px; height: 90px; }
+  .logoCircle span { font-size: 2rem; }
+  .cardTag em { font-size: 1.2rem; }
+  .scrollHint { display: none; }
+}
+
+/* ── Small mobile (≤480px) ── */
+@media (max-width: 480px) {
+  .imageStack {
+    max-width: 240px;
+    margin-inline-start: 2rem;
+  }
+  .imageCard {
+    width: 130px;
+    padding: 1rem 0.8rem;
+    left: -1.5rem;
+    bottom: -1rem;
+    gap: 0.8rem;
+  }
+  .logoCircle { width: 70px; height: 70px; }
+  .logoCircle span { font-size: 1.6rem; }
+  .cardTag span { font-size: 0.65rem; }
+  .cardTag em { font-size: 1rem; }
+  .tagline { font-size: clamp(2.2rem, 8vw, 3rem); }
+}

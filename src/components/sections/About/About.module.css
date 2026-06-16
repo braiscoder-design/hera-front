@@ -1,0 +1,113 @@
+.about {}
+
+.inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-lg);
+  align-items: center;
+}
+
+/* ── Image column ── */
+.imageCol {}
+
+.imageFrame {
+  position: relative;
+  max-width: 420px;
+}
+
+.image {
+  width: 100%;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  display: block;
+}
+
+.imageAccent {
+  position: absolute;
+  bottom: -1.5rem;
+  right: -1.5rem;
+  width: 60%;
+  aspect-ratio: 1;
+  border: 1px solid var(--color-accent);
+  border-radius: var(--radius-md);
+  z-index: -1;
+  opacity: 0.4;
+}
+
+/* ── Text column ── */
+.textCol {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.8rem, 3.5vw, 3rem);
+  font-weight: 300;
+  line-height: 1.2;
+  color: var(--color-text);
+}
+
+.body {
+  font-size: 0.95rem;
+  font-weight: 300;
+  color: var(--color-text-mid);
+  line-height: 1.85;
+  max-width: 52ch;
+}
+
+.values {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding-block-start: 0.5rem;
+}
+
+.value {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-mid);
+}
+
+.valueDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--color-accent);
+  flex-shrink: 0;
+}
+
+/* ── Tablet (769–1024px) ── */
+@media (max-width: 1024px) {
+  .inner { gap: 2.5rem; }
+  .imageFrame { max-width: 340px; }
+  .imageAccent { display: none; }
+}
+
+/* ── Mobile (≤768px) ── */
+@media (max-width: 768px) {
+  .inner {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  .imageFrame {
+    max-width: 100%;
+    /* Cap height so portrait image doesn't dominate on mobile */
+  }
+  .image { aspect-ratio: 4/3; }
+  .imageAccent { display: none; }
+  .body { max-width: 100%; }
+}
+
+/* ── Small mobile (≤480px) ── */
+@media (max-width: 480px) {
+  .image { aspect-ratio: 3/2; }
+  .textCol { gap: 1.2rem; }
+}

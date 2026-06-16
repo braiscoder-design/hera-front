@@ -1,0 +1,121 @@
+.contact {}
+
+.inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-lg);
+  align-items: center;
+}
+
+.textCol {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.8rem, 3.5vw, 3rem);
+  font-weight: 300;
+  line-height: 1.2;
+  color: #F7F3EE;
+}
+
+/* ── Info blocks ── */
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.infoBlock {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  color: rgba(247, 243, 238, 0.65);
+  font-size: 0.9rem;
+  font-weight: 300;
+  line-height: 1.6;
+}
+.infoBlock svg { flex-shrink: 0; margin-block-start: 0.15rem; opacity: 0.6; }
+.infoBlock a {
+  color: rgba(247, 243, 238, 0.65);
+  transition: color var(--transition);
+  word-break: break-all;
+}
+.infoBlock a:hover { color: var(--color-accent); }
+
+/* ── Hours ── */
+.hours {
+  padding: 1.5rem;
+  border: 1px solid rgba(247, 243, 238, 0.1);
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  font-size: 0.88rem;
+  color: rgba(247, 243, 238, 0.55);
+}
+
+.hoursTitle {
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-block-end: 0.4rem;
+}
+
+/* ── Actions ── */
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.btnWhatsapp {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.9rem 1.8rem;
+  background-color: #25D366;
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: var(--radius-sm);
+  transition: opacity var(--transition);
+  white-space: nowrap;
+}
+.btnWhatsapp:hover { opacity: 0.85; }
+
+/* ── Map column ── */
+.mapCol {
+  align-self: stretch;
+  min-height: 420px;
+}
+
+/* ── Tablet (≤1024px) ── */
+@media (max-width: 1024px) {
+  .inner { gap: 2.5rem; }
+  .mapCol { min-height: 320px; }
+}
+
+/* ── Mobile (≤768px) ── */
+@media (max-width: 768px) {
+  .inner {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .mapCol { display: none; }
+  .textCol { gap: 1.2rem; }
+}
+
+/* ── Small mobile (≤480px) ── */
+@media (max-width: 480px) {
+  .hours { padding: 1.2rem; font-size: 0.83rem; }
+  .actions { flex-direction: column; align-items: flex-start; gap: 1rem; }
+  .btnWhatsapp { width: 100%; justify-content: center; }
+}
