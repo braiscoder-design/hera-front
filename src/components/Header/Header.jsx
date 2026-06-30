@@ -31,7 +31,7 @@ export default function Header() {
   }
 
   return (
-    <header className={`${styles.header} ${scrolled ? styles.scrolled : ''}`}>
+    <header className={`${styles.header} ${scrolled ? styles.scrolled : ''} ${menuOpen ? styles.menuOpen : ''}`}>
       <div className={`${styles.inner} container`}>
         <a href="#hero" className={styles.logo} onClick={() => handleNav('#hero')}>
           <span className={styles.logoLetter}>H</span>
@@ -59,7 +59,7 @@ export default function Header() {
           </a>
         </nav>
 
-        <div className={styles.actions}>
+        <div className={`${styles.actions} ${menuOpen ? styles.actionsOpen : ''}`}>
           <button className={styles.langToggle} onClick={toggleLocale}>
             {locale === 'es' ? 'GL' : 'ES'}
           </button>

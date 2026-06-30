@@ -59,6 +59,8 @@
   transition: transform 0.5s ease;
 }
 .card:hover .cardImg img { transform: scale(1.05); }
+.imgZoom { transform: scale(1.2); }
+.card:hover .cardImg .imgZoom { transform: scale(1.25); }
 
 .cardBody {
   padding: 2rem 1.8rem;

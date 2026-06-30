@@ -38,27 +38,29 @@
 }
 
 .logoLetter {
-  width: 2.7rem;
-  height: 2.7rem;
-  border: 1.5px solid var(--color-text);
+  width: 2.9rem;
+  height: 2.9rem;
+  border: 1.5px solid #F7F3EE;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: var(--font-serif);
-  font-size: 1.35rem;
+  font-size: 1.45rem;
   font-weight: 500;
-  color: var(--color-text);
+  color: #F7F3EE;
   flex-shrink: 0;
+  transition: color var(--transition), border-color var(--transition);
 }
 
 .logoText {
   font-family: var(--font-serif);
-  font-size: 1.25rem;
+  font-size: 1.35rem;
   font-weight: 400;
   letter-spacing: 0.04em;
-  color: var(--color-text);
+  color: #F7F3EE;
   white-space: nowrap;
+  transition: color var(--transition);
 }
 
 /* ── Nav ── */
@@ -69,16 +71,16 @@
 }
 
 .navLink {
-  font-size: 0.78rem;
+  font-size: 0.82rem;
   font-weight: 400;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--color-text-mid);
+  color: rgba(247, 243, 238, 0.75);
   transition: color var(--transition);
   text-decoration: none;
 }
 .navLink:hover {
-  color: var(--color-text);
+  color: #F7F3EE;
 }
 
 .navBook {
@@ -96,17 +98,17 @@
 }
 
 .langToggle {
-  font-size: 0.72rem;
+  font-size: 0.76rem;
   font-weight: 500;
   letter-spacing: 0.12em;
-  color: var(--color-text-mid);
-  border-bottom: 1px solid var(--color-border);
+  color: rgba(247, 243, 238, 0.75);
+  border-bottom: 1px solid rgba(247, 243, 238, 0.4);
   padding-block-end: 1px;
-  transition: color var(--transition);
+  transition: color var(--transition), border-color var(--transition);
   cursor: pointer;
 }
 .langToggle:hover {
-  color: var(--color-accent);
+  color: #F7F3EE;
 }
 
 /* ── Burger ── */
@@ -121,13 +123,52 @@
   display: block;
   width: 22px;
   height: 1.5px;
-  background: var(--color-text);
+  background: #F7F3EE;
   transition: var(--transition);
   transform-origin: center;
+}
+
+/* ── Scrolled: revert to dark colors ── */
+.header.scrolled .logoLetter {
+  border-color: var(--color-text);
+  color: var(--color-text);
+}
+.header.scrolled .logoText {
+  color: var(--color-text);
+}
+.header.scrolled .navLink {
+  color: var(--color-text-mid);
+}
+.header.scrolled .navLink:hover {
+  color: var(--color-text);
+}
+.header.scrolled .langToggle {
+  color: var(--color-text-mid);
+  border-bottom-color: var(--color-border);
+}
+.header.scrolled .langToggle:hover {
+  color: var(--color-accent);
+}
+.header.scrolled .burger span {
+  background: var(--color-text);
 }
 .burgerOpen span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
 .burgerOpen span:nth-child(2) { opacity: 0; }
 .burgerOpen span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+/* Cuando el menú está abierto, burger y lang toggle vuelven a color oscuro */
+.burgerOpen span { background: var(--color-text); }
+.actionsOpen .langToggle {
+  color: var(--color-text-mid);
+  border-bottom-color: var(--color-border);
+}
+.menuOpen .logoLetter {
+  border-color: var(--color-text);
+  color: var(--color-text);
+}
+.menuOpen .logoText {
+  color: var(--color-text);
+}
 
 /* ── Tablet + Mobile nav collapse (≤860px) ── */
 @media (max-width: 860px) {
@@ -149,7 +190,11 @@
   }
   .nav.navOpen { display: flex; }
 
-  .navLink { font-size: 1rem; }
+  .navLink {
+    font-size: 1rem;
+    color: var(--color-text-mid);
+  }
+  .navLink:hover { color: var(--color-text); }
   .navBook {
     margin-left: 0;
     font-size: 0.78rem !important;

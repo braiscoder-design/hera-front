@@ -16,9 +16,12 @@ export default function Hero() {
 
   return (
     <section id="hero" className={styles.hero}>
-      <div className={styles.bg} aria-hidden="true">
-        <div className={styles.shape1} />
-        <div className={styles.shape2} />
+      <div className={styles.videoBg} aria-hidden="true">
+        <video autoPlay muted loop playsInline>
+          <source src="/videos/hero.webm" type="video/webm" />
+          <source src="/videos/hero.mp4" type="video/mp4" />
+        </video>
+        <div className={styles.videoOverlay} />
       </div>
 
       <div className={`${styles.inner} container`}>

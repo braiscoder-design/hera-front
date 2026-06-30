@@ -45,6 +45,7 @@ const SERVICES = [
   {
     key: 'pedicure',
     img: '/images/service-pedicure.jpg',
+    imgZoom: true,
     icon: (
       <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" strokeWidth="1.2">
         <ellipse cx="20" cy="26" rx="12" ry="8" />
@@ -82,13 +83,18 @@ export default function Services() {
         </div>
 
         <div ref={gridRef} className={styles.grid}>
-          {SERVICES.map(({ key, icon, img }, i) => (
+          {SERVICES.map(({ key, icon, img, imgZoom }, i) => (
             <article
               key={key}
               className={`${styles.card} reveal reveal--up${gridInView ? ' is-visible' : ''} reveal--${DELAYS[i]}`}
             >
               <div className={styles.cardImg}>
-                <img src={img} alt={formatMessage({ id: `services.${key}.title` })} loading="lazy" />
+                <img
+                  src={img}
+                  alt={formatMessage({ id: `services.${key}.title` })}
+                  loading="lazy"
+                  className={imgZoom ? styles.imgZoom : undefined}
+                />
               </div>
               <div className={styles.cardBody}>
                 <div className={styles.cardIcon}>{icon}</div>
