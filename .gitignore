@@ -7,3 +7,4 @@ dist/
 .idea/
 .pnpmfile.cjs
 .pnpm-workspace-allow-build.json
+hera-content/
