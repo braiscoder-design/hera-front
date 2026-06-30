@@ -3,12 +3,12 @@ import { useInView } from '../../../hooks/useInView'
 import styles from './Gallery.module.css'
 
 const ITEMS = [
-  { src: '/images/gallery-lashes-1.jpg', alt: 'Extensiones de pestañas' },
-  { src: '/images/gallery-brows-1.jpg',  alt: 'Diseño de cejas' },
-  { src: '/images/gallery-nails-1.jpg',  alt: 'Nail art' },
-  { src: '/images/gallery-lashes-2.jpg', alt: 'Lifting de pestañas' },
-  { src: '/images/gallery-mood.jpg',     alt: 'Ambiente del estudio' },
-  { src: '/images/gallery-nails-2.jpg',  alt: 'Manicura gel' },
+  { type: 'video', mp4: '/videos/gallery-manicure.mp4', webm: '/videos/gallery-manicure.webm', alt: 'Manicura terminada' },
+  { src: '/images/gallery-extension-pestanas.jpg', alt: 'Extensión de pestañas' },
+  { type: 'video', mp4: '/videos/gallery-lashes.mp4', webm: '/videos/gallery-lashes.webm', alt: 'Lifting de pestañas' },
+  { src: '/images/gallery-hydralips.jpg',           alt: 'Hydralips' },
+  { src: '/images/gallery-kit-cejas.jpg',           alt: 'Diseño de cejas' },
+  { src: '/images/gallery-manicure-proceso.jpg',    alt: 'Proceso de manicura' },
 ]
 
 // Mosaico: tall | square | tall / square | wide(2col)
@@ -43,7 +43,21 @@ export default function Gallery() {
               key={i}
               className={`${styles.item} ${styles[MOSAIC[i]]} reveal reveal--scale${gridInView ? ' is-visible' : ''} reveal--${DELAYS[i]}`}
             >
-              <img src={item.src} alt={item.alt} className={styles.img} loading="lazy" />
+              {item.type === 'video' ? (
+                <video
+                  className={styles.img}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  aria-label={item.alt}
+                >
+                  <source src={item.webm} type="video/webm" />
+                  <source src={item.mp4} type="video/mp4" />
+                </video>
+              ) : (
+                <img src={item.src} alt={item.alt} className={styles.img} loading="lazy" />
+              )}
             </div>
           ))}
         </div>
