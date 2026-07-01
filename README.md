@@ -89,7 +89,7 @@ Paleta basada en tonos beige, gris cálido y dorado suave, sin saturación exces
 
 ## Contacto del negocio
 
-- **Dirección:** Rúa Juan Flórez 72 Bajo, 15005 A Coruña
+- **Dirección:** Calle Juan Flórez 72 Bajo, 15005 A Coruña
 - **Teléfono:** 698 119 786
 - **Email:** herathebeautystudio@gmail.com
 - **Instagram:** [@herathebeautystudio](https://www.instagram.com/herathebeautystudio/)

@@ -34,8 +34,7 @@ export default function Header() {
     <header className={`${styles.header} ${scrolled ? styles.scrolled : ''} ${menuOpen ? styles.menuOpen : ''}`}>
       <div className={`${styles.inner} container`}>
         <a href="#hero" className={styles.logo} onClick={() => handleNav('#hero')}>
-          <span className={styles.logoLetter}>H</span>
-          <span className={styles.logoText}>Hera The Beauty Studio</span>
+          <img src="/logo/LOGO_V1-N.svg" alt="Hera The Beauty Studio" className={styles.logoImg} />
         </a>
 
         <nav className={`${styles.nav} ${menuOpen ? styles.navOpen : ''}`}>

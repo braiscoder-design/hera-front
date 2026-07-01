@@ -37,30 +37,12 @@
   z-index: 101;
 }
 
-.logoLetter {
-  width: 2.9rem;
-  height: 2.9rem;
-  border: 1.5px solid #F7F3EE;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-serif);
-  font-size: 1.45rem;
-  font-weight: 500;
-  color: #F7F3EE;
-  flex-shrink: 0;
-  transition: color var(--transition), border-color var(--transition);
-}
-
-.logoText {
-  font-family: var(--font-serif);
-  font-size: 1.35rem;
-  font-weight: 400;
-  letter-spacing: 0.04em;
-  color: #F7F3EE;
-  white-space: nowrap;
-  transition: color var(--transition);
+.logoImg {
+  height: 1.6rem;
+  width: auto;
+  display: block;
+  filter: brightness(0) invert(1);
+  transition: filter var(--transition);
 }
 
 /* ── Nav ── */
@@ -76,11 +58,14 @@
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: rgba(247, 243, 238, 0.75);
-  transition: color var(--transition);
   text-decoration: none;
+  padding: 0.4rem 0.75rem;
+  border-radius: var(--radius-sm);
+  transition: color var(--transition), background-color var(--transition);
 }
 .navLink:hover {
   color: #F7F3EE;
+  background-color: rgba(247, 243, 238, 0.12);
 }
 
 .navBook {
@@ -129,18 +114,15 @@
 }
 
 /* ── Scrolled: revert to dark colors ── */
-.header.scrolled .logoLetter {
-  border-color: var(--color-text);
-  color: var(--color-text);
-}
-.header.scrolled .logoText {
-  color: var(--color-text);
+.header.scrolled .logoImg {
+  filter: none;
 }
 .header.scrolled .navLink {
   color: var(--color-text-mid);
 }
 .header.scrolled .navLink:hover {
   color: var(--color-text);
+  background-color: rgba(42, 37, 32, 0.06);
 }
 .header.scrolled .langToggle {
   color: var(--color-text-mid);
@@ -162,17 +144,12 @@
   color: var(--color-text-mid);
   border-bottom-color: var(--color-border);
 }
-.menuOpen .logoLetter {
-  border-color: var(--color-text);
-  color: var(--color-text);
-}
-.menuOpen .logoText {
-  color: var(--color-text);
+.menuOpen .logoImg {
+  filter: none;
 }
 
 /* ── Tablet + Mobile nav collapse (≤860px) ── */
 @media (max-width: 860px) {
-  .logoText { display: none; }
   .burger { display: flex; }
 
   .nav {
@@ -206,5 +183,5 @@
 @media (max-width: 480px) {
   .header { padding-block: 1rem; }
   .header.scrolled { padding-block: 0.75rem; }
-  .logoLetter { width: 2.3rem; height: 2.3rem; font-size: 1.15rem; }
+  .logoImg { height: 1.3rem; }
 }

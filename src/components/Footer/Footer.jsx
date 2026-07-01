@@ -8,7 +8,7 @@ export default function Footer() {
     <footer className={`${styles.footer} section--dark`}>
       <div className={`${styles.inner} container`}>
         <div className={styles.brand}>
-          <div className={styles.logoMark}>H</div>
+          <img src="/logo/LOGO_V1-N.svg" alt="Hera The Beauty Studio" className={styles.logoMark} />
           <p className={styles.tagline}>{formatMessage({ id: 'footer.tagline' })}</p>
           <div className={styles.socials}>
             <a href="https://www.instagram.com/herathebeautystudio/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
@@ -44,7 +44,7 @@ export default function Footer() {
             <span className={styles.groupTitle}>Contacto</span>
             <a href="tel:+34698119786">698 119 786</a>
             <a href="mailto:herathebeautystudio@gmail.com">herathebeautystudio@gmail.com</a>
-            <span>Rúa Juan Flórez, 72 Bajo<br />15005 · A Coruña</span>
+            <span>Calle Juan Flórez, 72 Bajo<br />15005 · A Coruña</span>
           </div>
         </div>
       </div>
