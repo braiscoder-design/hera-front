@@ -1,6 +1,7 @@
 export { default as IconWhatsapp } from './IconWhatsapp'
 export { default as IconCalendar } from './IconCalendar'
 export { default as IconChevronDown } from './IconChevronDown'
+export { default as IconPlus } from './IconPlus'
 export { default as IconMapPin } from './IconMapPin'
 export { default as IconPhone } from './IconPhone'
 export { default as IconMail } from './IconMail'

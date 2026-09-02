@@ -1,0 +1,178 @@
+/* ── Hero ── */
+.hero {
+  position: relative;
+  min-height: 60vh;
+  display: flex;
+  align-items: flex-end;
+  background-size: cover;
+  background-position: center;
+  padding-block-end: var(--spacing-lg);
+  padding-block-start: 8rem;
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(42,37,32,0.55) 0%, rgba(42,37,32,0.75) 100%);
+}
+
+.heroInner {
+  position: relative;
+  z-index: 1;
+  color: #F7F3EE;
+}
+
+.back {
+  display: inline-block;
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  color: rgba(247, 243, 238, 0.75);
+  margin-block-end: 1.2rem;
+  transition: color var(--transition);
+}
+.back:hover { color: #F7F3EE; }
+
+.title {
+  font-family: var(--font-serif);
+  font-weight: 300;
+  font-size: clamp(2.4rem, 6vw, 4.2rem);
+  line-height: 1.05;
+}
+
+.tagline {
+  margin-block-start: 0.8rem;
+  font-size: 1rem;
+  font-weight: 300;
+  color: rgba(247, 243, 238, 0.85);
+  max-width: 32rem;
+}
+
+/* ── Aviso de contenido de ejemplo ── */
+.pendingNotice {
+  text-align: center;
+  font-size: 0.78rem;
+  color: var(--color-text-mid);
+  background-color: var(--color-accent-soft);
+  padding-block: 0.6rem;
+  padding-inline: 1rem;
+}
+
+/* ── Intro ── */
+.intro {
+  max-width: 42rem;
+  margin-inline: auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.introText {
+  font-size: 1.05rem;
+  font-weight: 300;
+  line-height: 1.75;
+  color: var(--color-text);
+}
+
+.introItems {
+  font-size: 0.85rem;
+  letter-spacing: 0.03em;
+  color: var(--color-accent);
+}
+
+/* ── Info / acordeón ── */
+.infoHeader {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-block-end: var(--spacing-md);
+}
+
+.infoTitle {
+  font-family: var(--font-serif);
+  font-weight: 300;
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  color: var(--color-text);
+}
+
+.accordionWrap {
+  max-width: 42rem;
+  margin-inline: auto;
+}
+
+/* ── CTA ── */
+.cta {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.ctaTitle {
+  font-family: var(--font-serif);
+  font-weight: 300;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  color: #F7F3EE;
+}
+
+.ctaBody {
+  font-size: 0.95rem;
+  font-weight: 300;
+  color: rgba(247, 243, 238, 0.7);
+  max-width: 28rem;
+}
+
+.ctaActions {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-block-start: 0.8rem;
+}
+
+.btnWhatsapp {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.9rem 1.8rem;
+  background-color: #25D366;
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: var(--radius-sm);
+  transition: opacity var(--transition);
+  white-space: nowrap;
+}
+.btnWhatsapp:hover { opacity: 0.85; }
+
+.btnKoibox {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: calc(0.9rem - 1px) calc(1.8rem - 1px);
+  background-color: transparent;
+  border: 1px solid var(--color-accent);
+  color: var(--color-accent);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: var(--radius-sm);
+  transition: background-color var(--transition), color var(--transition);
+  white-space: nowrap;
+}
+.btnKoibox:hover {
+  background-color: var(--color-accent);
+  color: #2A2520;
+}
+
+@media (max-width: 480px) {
+  .hero { padding-block-start: 6.5rem; min-height: 50vh; }
+  .ctaActions { flex-direction: column; width: 100%; }
+  .btnWhatsapp, .btnKoibox { width: 100%; justify-content: center; }
+}

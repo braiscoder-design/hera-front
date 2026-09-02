@@ -45,41 +45,113 @@
   transition: filter var(--transition);
 }
 
-/* ── Nav ── */
-.nav {
-  display: flex;
-  align-items: center;
-  gap: 2rem;
+.header.scrolled .logoImg {
+  filter: none;
 }
+.menuOpen .logoImg {
+  filter: none;
+}
+
+/* ── Nav: overlay a pantalla completa, siempre (no solo mobile) ── */
+.nav {
+  display: none;
+  position: fixed;
+  inset-block-start: 0;
+  inset-inline: 0;
+  height: 100dvh;
+  overflow-y: auto;
+  background-color: var(--color-bg);
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2.2rem;
+  padding-block: 6rem 3rem;
+  z-index: 99;
+}
+.nav.navOpen { display: flex; }
 
 .navLink {
-  font-size: 0.82rem;
+  font-size: 1.05rem;
   font-weight: 400;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: rgba(247, 243, 238, 0.75);
+  letter-spacing: 0.03em;
+  color: var(--color-text-mid);
   text-decoration: none;
-  padding: 0.4rem 0.75rem;
+  padding: 0.3rem 0.75rem;
   border-radius: var(--radius-sm);
-  transition: color var(--transition), background-color var(--transition);
+  transition: color var(--transition);
 }
 .navLink:hover {
-  color: #F7F3EE;
-  background-color: rgba(247, 243, 238, 0.12);
+  color: var(--color-text);
 }
 
-.navBook {
-  margin-left: 0.5rem;
-  font-size: 0.72rem !important;
-  padding: 0.65rem 1.4rem !important;
+/* ── "Servicios" como desplegable dentro del overlay ── */
+.navServices {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.navServicesToggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.05rem;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  color: var(--color-text-mid);
+  transition: color var(--transition);
+}
+.navServicesToggle:hover { color: var(--color-text); }
+
+.navServicesMenu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.7rem;
+  max-height: 0;
+  opacity: 0;
+  margin-block-start: 0;
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease, margin-block-start 0.35s ease;
+}
+.navServicesMenuOpen {
+  max-height: 20rem;
+  opacity: 1;
+  margin-block-start: 1rem;
+}
+
+.navSubLink {
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: var(--color-text-light);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+.navSubLink:hover {
+  color: var(--color-accent);
+}
+
+/* ── Selector de idioma (reubicado dentro del overlay) ── */
+.navLangToggle {
+  margin-block-start: 0.5rem;
+  font-size: 0.76rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-mid);
+  border-bottom: 1px solid var(--color-border);
+  padding-block-end: 1px;
+  transition: color var(--transition), border-color var(--transition);
+}
+.navLangToggle:hover {
+  color: var(--color-accent);
+  border-bottom-color: var(--color-accent);
 }
 
 /* ── Selector Reservar (WhatsApp / Koibox) ── */
 .bookWrapper {
   position: relative;
-  margin-left: 0.5rem;
 }
-.bookWrapper .navBook { margin-left: 0; }
 
 .chevron {
   transition: transform var(--transition);
@@ -88,11 +160,15 @@
   transform: rotate(180deg);
 }
 
+.navBook {
+  font-size: 0.72rem !important;
+  padding: 0.65rem 1.4rem !important;
+}
+
 .bookMenu {
   position: absolute;
   top: calc(100% + 10px);
-  left: 50%;
-  transform: translateX(-50%);
+  right: 0;
   min-width: 220px;
   background-color: var(--color-bg);
   border: 1px solid var(--color-border);
@@ -122,7 +198,7 @@
 }
 .bookOption svg { flex-shrink: 0; }
 
-/* ── Actions ── */
+/* ── Actions: reserva | separador | hamburguesa ── */
 .actions {
   display: flex;
   align-items: center;
@@ -130,106 +206,47 @@
   z-index: 101;
 }
 
-.langToggle {
-  font-size: 0.76rem;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  color: rgba(247, 243, 238, 0.75);
-  border-bottom: 1px solid rgba(247, 243, 238, 0.4);
-  padding-block-end: 1px;
-  transition: color var(--transition), border-color var(--transition);
-  cursor: pointer;
+.navSeparator {
+  width: 1px;
+  height: 22px;
+  background-color: rgba(247, 243, 238, 0.35);
+  transition: background-color var(--transition);
 }
-.langToggle:hover {
-  color: #F7F3EE;
+.header.scrolled .navSeparator,
+.menuOpen .navSeparator {
+  background-color: var(--color-border);
 }
 
-/* ── Burger ── */
+/* ── Hamburguesa (2 líneas, como Aura) ── */
 .burger {
-  display: none;
+  display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 6px;
   padding: 4px;
   cursor: pointer;
 }
 .burger span {
   display: block;
-  width: 22px;
+  width: 24px;
   height: 1.5px;
   background: #F7F3EE;
   transition: var(--transition);
   transform-origin: center;
 }
-
-/* ── Scrolled: revert to dark colors ── */
-.header.scrolled .logoImg {
-  filter: none;
-}
-.header.scrolled .navLink {
-  color: var(--color-text-mid);
-}
-.header.scrolled .navLink:hover {
-  color: var(--color-text);
-  background-color: rgba(42, 37, 32, 0.06);
-}
-.header.scrolled .langToggle {
-  color: var(--color-text-mid);
-  border-bottom-color: var(--color-border);
-}
-.header.scrolled .langToggle:hover {
-  color: var(--color-accent);
-}
 .header.scrolled .burger span {
   background: var(--color-text);
 }
-.burgerOpen span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
-.burgerOpen span:nth-child(2) { opacity: 0; }
-.burgerOpen span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
-
-/* Cuando el menú está abierto, burger y lang toggle vuelven a color oscuro */
-.burgerOpen span { background: var(--color-text); }
-.actionsOpen .langToggle {
-  color: var(--color-text-mid);
-  border-bottom-color: var(--color-border);
+.burgerOpen span {
+  background: var(--color-text) !important;
 }
-.menuOpen .logoImg {
-  filter: none;
-}
-
-/* ── Tablet + Mobile nav collapse (≤860px) ── */
-@media (max-width: 860px) {
-  .burger { display: flex; }
-
-  .nav {
-    display: none;
-    position: fixed;
-    inset-block-start: 0;
-    inset-inline: 0;
-    height: 100dvh;
-    background-color: var(--color-bg);
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 2.5rem;
-    z-index: 99;
-  }
-  .nav.navOpen { display: flex; }
-
-  .navLink {
-    font-size: 1rem;
-    color: var(--color-text-mid);
-  }
-  .navLink:hover { color: var(--color-text); }
-  .navBook {
-    margin-left: 0;
-    font-size: 0.78rem !important;
-    padding: 0.8rem 2rem !important;
-  }
-}
+.burgerOpen span:nth-child(1) { transform: translateY(3.75px) rotate(45deg); }
+.burgerOpen span:nth-child(2) { transform: translateY(-3.75px) rotate(-45deg); }
 
 /* ── Small mobile ── */
 @media (max-width: 480px) {
   .header { padding-block: 1rem; }
   .header.scrolled { padding-block: 0.75rem; }
   .logoImg { height: 1.3rem; }
+  .navBook { font-size: 0.68rem !important; padding: 0.6rem 1.2rem !important; }
+  .bookMenu { right: -1rem; min-width: 200px; }
 }

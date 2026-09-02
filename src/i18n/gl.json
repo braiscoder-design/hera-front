@@ -21,6 +21,7 @@
   "services.label": "Os nosos servizos",
   "services.title": "Todo o que necesitas para brillar",
   "services.subtitle": "Tratamentos personalizados adaptados á túa mirada e estilo de vida.",
+  "services.viewMore": "Ver máis",
 
   "services.lashes.title": "Pestanas",
   "services.lashes.desc": "Extensións volume, pelo a pelo, híbridas e lifting de pestanas. Realzamos a túa mirada de forma natural e duradeira.",
@@ -37,6 +38,27 @@
   "services.pedicure.title": "Pedicura",
   "services.pedicure.desc": "Coidado completo para os teus pés con tratamentos de hidratación e esmalte duradeiro.",
   "services.pedicure.items": "Pedicura completa · Semipermanente · Tratamento hidratante",
+
+  "services.lashes.tagline": "Realza a túa mirada de forma natural e duradeira.",
+  "services.brows.tagline": "O marco perfecto para a túa mirada.",
+  "services.manicure.tagline": "Atención ao detalle en cada esmaltado.",
+  "services.pedicure.tagline": "Coidado completo para pés impecables.",
+
+  "servicePage.pending": "Páxina de exemplo — contido e fotografías definitivas pendentes de confirmar.",
+  "servicePage.infoLabel": "Máis información",
+  "servicePage.infoTitle": "O que precisas saber",
+  "servicePage.ctaTitle": "Preparada para a túa cita?",
+  "servicePage.ctaBody": "Escríbenos e axudámoste a elixir o tratamento perfecto para ti.",
+  "servicePage.back": "Volver a servizos",
+
+  "servicePage.accordion.duration.title": "Duración e prezo orientativo",
+  "servicePage.accordion.duration.body": "Contido de exemplo: aquí indicaremos a duración media da sesión e un rango de prezos orientativo para este tratamento.",
+  "servicePage.accordion.includes.title": "Que inclúe a sesión",
+  "servicePage.accordion.includes.body": "Contido de exemplo: aquí detallaremos paso a paso en que consiste o tratamento e que produtos ou técnicas se utilizan.",
+  "servicePage.accordion.aftercare.title": "Coidados posteriores",
+  "servicePage.accordion.aftercare.body": "Contido de exemplo: aquí explicaremos as recomendacións de coidado tras a sesión para alongar o resultado.",
+  "servicePage.accordion.faq.title": "Preguntas frecuentes",
+  "servicePage.accordion.faq.body": "Contido de exemplo: aquí resolveremos as dúbidas máis habituais sobre este tratamento.",
 
   "values.tranquility": "Tranquilidade",
   "values.precision": "Precisión",

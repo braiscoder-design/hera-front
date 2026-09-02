@@ -1,31 +1,22 @@
 import { useIntl } from 'react-intl'
+import { Link } from 'react-router-dom'
 import { useInView } from '../../../hooks/useInView'
 import { IconLashes, IconBrows, IconManicure, IconPedicure } from '../../../icons'
+import { SERVICES as SERVICES_DATA } from '../../../data/services'
 import styles from './Services.module.css'
 
-const SERVICES = [
-  {
-    key: 'lashes',
-    img: '/images/service-lashes.jpg',
-    icon: <IconLashes />,
-  },
-  {
-    key: 'brows',
-    img: '/images/service-brows.jpg',
-    icon: <IconBrows />,
-  },
-  {
-    key: 'manicure',
-    img: '/images/service-manicure.jpg',
-    icon: <IconManicure />,
-  },
-  {
-    key: 'pedicure',
-    img: '/images/service-pedicure.jpg',
-    imgZoom: true,
-    icon: <IconPedicure />,
-  },
-]
+const ICONS = {
+  lashes: <IconLashes />,
+  brows: <IconBrows />,
+  manicure: <IconManicure />,
+  pedicure: <IconPedicure />,
+}
+
+const SERVICES = SERVICES_DATA.map((s) => ({
+  ...s,
+  icon: ICONS[s.key],
+  imgZoom: s.key === 'pedicure',
+}))
 
 const DELAYS = ['d1', 'd2', 'd3', 'd4']
 
@@ -52,7 +43,7 @@ export default function Services() {
         </div>
 
         <div ref={gridRef} className={styles.grid}>
-          {SERVICES.map(({ key, icon, img, imgZoom }, i) => (
+          {SERVICES.map(({ key, slug, icon, img, imgZoom }, i) => (
             <article
               key={key}
               className={`${styles.card} reveal reveal--up${gridInView ? ' is-visible' : ''} reveal--${DELAYS[i]}`}
@@ -76,6 +67,9 @@ export default function Services() {
                 <p className={styles.cardItems}>
                   {formatMessage({ id: `services.${key}.items` })}
                 </p>
+                <Link to={`/${slug}`} className={`btn ${styles.cardMore}`}>
+                  {formatMessage({ id: 'services.viewMore' })}
+                </Link>
               </div>
             </article>
           ))}

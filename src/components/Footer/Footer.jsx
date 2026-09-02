@@ -1,5 +1,7 @@
 import { useIntl } from 'react-intl'
+import { Link } from 'react-router-dom'
 import { IconInstagram, IconWhatsapp } from '../../icons'
+import { SERVICES } from '../../data/services'
 import styles from './Footer.module.css'
 
 export default function Footer() {
@@ -24,16 +26,17 @@ export default function Footer() {
         <div className={styles.links}>
           <div className={styles.linkGroup}>
             <span className={styles.groupTitle}>Servicios</span>
-            <a href="#services">Pestañas</a>
-            <a href="#services">Cejas</a>
-            <a href="#services">Manicura</a>
-            <a href="#services">Pedicura</a>
+            {SERVICES.map((s) => (
+              <Link key={s.slug} to={`/${s.slug}`}>
+                {formatMessage({ id: `services.${s.key}.title` })}
+              </Link>
+            ))}
           </div>
           <div className={styles.linkGroup}>
             <span className={styles.groupTitle}>Estudio</span>
-            <a href="#about">{formatMessage({ id: 'nav.about' })}</a>
-            <a href="#gallery">{formatMessage({ id: 'nav.gallery' })}</a>
-            <a href="#contact">{formatMessage({ id: 'nav.contact' })}</a>
+            <Link to="/#about">{formatMessage({ id: 'nav.about' })}</Link>
+            <Link to="/#gallery">{formatMessage({ id: 'nav.gallery' })}</Link>
+            <Link to="/#contact">{formatMessage({ id: 'nav.contact' })}</Link>
           </div>
           <div className={styles.linkGroup}>
             <span className={styles.groupTitle}>Contacto</span>
