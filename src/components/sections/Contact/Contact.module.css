@@ -138,6 +138,9 @@
 @media (max-width: 1024px) {
   .inner { gap: 2.5rem; }
   .mapCol { min-height: 320px; }
+  .topRow { flex-direction: column; align-items: flex-start; gap: 0.8rem; }
+  /* "Cómo llegar" (último hijo de .topRow) pasa a ir encima del botón de WhatsApp */
+  .topRow a:last-child { order: -1; }
 }
 
 /* ── Mobile (≤768px) ── */
@@ -156,5 +159,7 @@
   .actions { flex-direction: column; align-items: flex-start; gap: 1rem; }
   .reserveGroup { width: 100%; }
   .topRow { flex-direction: column; align-items: flex-start; gap: 0.8rem; width: 100%; }
+  /* "Cómo llegar" (último hijo de .topRow) pasa a ir encima del botón de WhatsApp */
+  .topRow a:last-child { order: -1; }
   .btnWhatsapp, .btnKoibox { width: 100%; justify-content: center; }
 }

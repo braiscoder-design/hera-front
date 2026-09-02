@@ -1,5 +1,6 @@
 import { useIntl } from 'react-intl'
 import { useInView } from '../../../hooks/useInView'
+import { IconInstagram } from '../../../icons'
 import styles from './Gallery.module.css'
 
 const ITEMS = [
@@ -74,11 +75,7 @@ export default function Gallery() {
             rel="noopener noreferrer"
             className="btn btn--outline"
           >
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-              <rect x="2" y="2" width="20" height="20" rx="5" />
-              <circle cx="12" cy="12" r="4" />
-              <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none" />
-            </svg>
+            <IconInstagram width={16} height={16} strokeWidth={1.8} />
             {formatMessage({ id: 'gallery.cta' })}
           </a>
         </div>

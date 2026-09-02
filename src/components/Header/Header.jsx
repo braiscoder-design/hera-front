@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { useState, useEffect, useRef } from 'react'
 import { useIntl } from 'react-intl'
 import { useLang } from '../../i18n/IntlProvider'
+import { IconWhatsapp, IconCalendar, IconChevronDown } from '../../icons'
 import styles from './Header.module.css'
 
 const NAV_ITEMS = [
@@ -17,6 +17,8 @@ export default function Header() {
   const { locale, toggleLocale } = useLang()
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  const [bookOpen, setBookOpen] = useState(false)
+  const bookRef = useRef(null)
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 40)
@@ -24,8 +26,25 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handler)
   }, [])
 
+  useEffect(() => {
+    if (!bookOpen) return
+    const handleOutside = (e) => {
+      if (bookRef.current && !bookRef.current.contains(e.target)) setBookOpen(false)
+    }
+    const handleEscape = (e) => {
+      if (e.key === 'Escape') setBookOpen(false)
+    }
+    document.addEventListener('mousedown', handleOutside)
+    document.addEventListener('keydown', handleEscape)
+    return () => {
+      document.removeEventListener('mousedown', handleOutside)
+      document.removeEventListener('keydown', handleEscape)
+    }
+  }, [bookOpen])
+
   const handleNav = (href) => {
     setMenuOpen(false)
+    setBookOpen(false)
     const el = document.querySelector(href)
     if (el) el.scrollIntoView({ behavior: 'smooth' })
   }
@@ -48,14 +67,45 @@ export default function Header() {
               {formatMessage({ id: item.id })}
             </a>
           ))}
-          <a
-            href="https://wa.me/34698119786"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`btn btn--primary ${styles.navBook}`}
-          >
-            {formatMessage({ id: 'nav.book' })}
-          </a>
+          <div className={styles.bookWrapper} ref={bookRef}>
+            <button
+              type="button"
+              className={`btn btn--primary ${styles.navBook}`}
+              onClick={() => setBookOpen(v => !v)}
+              aria-haspopup="true"
+              aria-expanded={bookOpen}
+            >
+              {formatMessage({ id: 'nav.book' })}
+              <IconChevronDown className={`${styles.chevron} ${bookOpen ? styles.chevronOpen : ''}`} />
+            </button>
+
+            {bookOpen && (
+              <div className={styles.bookMenu} role="menu">
+                <a
+                  href="https://wa.me/34698119786"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.bookOption}
+                  role="menuitem"
+                  onClick={() => setBookOpen(false)}
+                >
+                  <IconWhatsapp width={16} height={16} strokeWidth={1.6} stroke="#25D366" />
+                  {formatMessage({ id: 'contact.whatsapp' })}
+                </a>
+                <a
+                  href="https://reservas.koibox.cloud/por-definir"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.bookOption}
+                  role="menuitem"
+                  onClick={() => setBookOpen(false)}
+                >
+                  <IconCalendar width={16} height={16} strokeWidth={1.6} style={{ stroke: 'var(--color-accent)' }} />
+                  {formatMessage({ id: 'contact.koibox' })}
+                </a>
+              </div>
+            )}
+          </div>
         </nav>
 
         <div className={`${styles.actions} ${menuOpen ? styles.actionsOpen : ''}`}>
