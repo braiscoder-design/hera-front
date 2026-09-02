@@ -25,10 +25,16 @@
   line-height: 1.75;
 }
 
-/* ── Grid ── */
+/* ── Grid ──
+   Flexbox en vez de CSS Grid: con 5 servicios (no múltiplo de las 4
+   columnas), un grid de columnas fijas obliga a la última tarjeta a
+   ocupar toda la fila o deja celdas vacías con el color de fondo del
+   grid. Con flex-wrap y flex-grow:0, cada tarjeta mide siempre lo mismo
+   y, si sobra sitio en la fila, simplemente queda hueco (sin color), no
+   una tarjeta más grande. */
 .grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  display: flex;
+  flex-wrap: wrap;
   gap: 1.5px;
   background-color: var(--color-border);
   border: 1.5px solid var(--color-border);
@@ -43,6 +49,7 @@
   flex-direction: column;
   transition: background-color var(--transition);
   overflow: hidden;
+  flex: 0 0 calc(20% - 1.2px);
 }
 .card:hover { background-color: var(--color-bg); }
 
@@ -116,7 +123,7 @@
 
 /* ── Tablet (≤1024px) — 2 cols ── */
 @media (max-width: 1024px) {
-  .grid { grid-template-columns: repeat(2, 1fr); }
+  .card { flex-basis: calc(50% - 0.75px); }
 }
 
 /* ── Tablet small / mobile (≤768px) ── */
@@ -128,7 +135,7 @@
 
 /* ── Small mobile (≤480px) — 1 col ── */
 @media (max-width: 480px) {
-  .grid { grid-template-columns: 1fr; }
+  .card { flex-basis: 100%; }
   .cardImg { aspect-ratio: 16/9; }
   .cardBody { padding: 1.2rem 1rem; gap: 0.75rem; }
 }

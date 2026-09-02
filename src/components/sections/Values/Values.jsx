@@ -1,8 +1,7 @@
 import { useIntl } from 'react-intl'
 import { useInView } from '../../../hooks/useInView'
+import { ITEMS } from './values-constants'
 import styles from './Values.module.css'
-
-const ITEMS = ['values.tranquility', 'values.precision', 'values.beauty']
 
 export default function Values() {
   const { formatMessage } = useIntl()

@@ -39,10 +39,15 @@
   "services.pedicure.desc": "Coidado completo para os teus pés con tratamentos de hidratación e esmalte duradeiro.",
   "services.pedicure.items": "Pedicura completa · Semipermanente · Tratamento hidratante",
 
+  "services.training.title": "Formacións",
+  "services.training.desc": "Cursos e formacións para quen quere aprender e profesionalizarse no mundo da estética. Proximamente máis información sobre datas e contidos.",
+  "services.training.items": "Cursos presenciais · Grupos reducidos · Certificado de asistencia",
+
   "services.lashes.tagline": "Realza a túa mirada de forma natural e duradeira.",
   "services.brows.tagline": "O marco perfecto para a túa mirada.",
   "services.manicure.tagline": "Atención ao detalle en cada esmaltado.",
   "services.pedicure.tagline": "Coidado completo para pés impecables.",
+  "services.training.tagline": "Aprende da man de profesionais.",
 
   "servicePage.pending": "Páxina de exemplo — contido e fotografías definitivas pendentes de confirmar.",
   "servicePage.infoLabel": "Máis información",

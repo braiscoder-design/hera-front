@@ -131,9 +131,15 @@
   color: var(--color-accent);
 }
 
+/* ── Separador antes del selector de idioma, para que no parezca un ítem más ── */
+.navDivider {
+  width: 2rem;
+  height: 1px;
+  background-color: var(--color-border);
+}
+
 /* ── Selector de idioma (reubicado dentro del overlay) ── */
 .navLangToggle {
-  margin-block-start: 0.5rem;
   font-size: 0.76rem;
   font-weight: 500;
   letter-spacing: 0.12em;
@@ -198,12 +204,39 @@
 }
 .bookOption svg { flex-shrink: 0; }
 
-/* ── Actions: reserva | separador | hamburguesa ── */
+/* ── Actions: reserva | separador | hamburguesa (o, en Home+desktop, solo idioma) ── */
 .actions {
   display: flex;
   align-items: center;
   gap: 1rem;
   z-index: 101;
+}
+
+.hamburgerActions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.classicLangToggle {
+  display: none;
+  font-size: 0.76rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  color: rgba(247, 243, 238, 0.75);
+  border-bottom: 1px solid rgba(247, 243, 238, 0.4);
+  padding-block-end: 1px;
+  transition: color var(--transition), border-color var(--transition);
+}
+.classicLangToggle:hover {
+  color: #F7F3EE;
+}
+.header.scrolled .classicLangToggle {
+  color: var(--color-text-mid);
+  border-bottom-color: var(--color-border);
+}
+.header.scrolled .classicLangToggle:hover {
+  color: var(--color-accent);
 }
 
 .navSeparator {
@@ -242,6 +275,117 @@
 .burgerOpen span:nth-child(1) { transform: translateY(3.75px) rotate(45deg); }
 .burgerOpen span:nth-child(2) { transform: translateY(-3.75px) rotate(-45deg); }
 
+/* ── Nav clásico: solo Home, solo desktop (ver media query al final) ── */
+.classicNav {
+  display: none;
+}
+
+.classicLink {
+  font-size: 0.82rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(247, 243, 238, 0.75);
+  text-decoration: none;
+  padding: 0.4rem 0.75rem;
+  border-radius: var(--radius-sm);
+  transition: color var(--transition), background-color var(--transition);
+}
+.classicLink:hover {
+  color: #F7F3EE;
+  background-color: rgba(247, 243, 238, 0.12);
+}
+.header.scrolled .classicLink {
+  color: var(--color-text-mid);
+}
+.header.scrolled .classicLink:hover {
+  color: var(--color-text);
+  background-color: rgba(42, 37, 32, 0.06);
+}
+
+.classicServices {
+  position: relative;
+}
+
+.classicServicesToggle {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.82rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(247, 243, 238, 0.75);
+  padding: 0.4rem 0.75rem;
+  border-radius: var(--radius-sm);
+  transition: color var(--transition), background-color var(--transition);
+}
+.classicServicesToggle:hover {
+  color: #F7F3EE;
+  background-color: rgba(247, 243, 238, 0.12);
+}
+.header.scrolled .classicServicesToggle {
+  color: var(--color-text-mid);
+}
+.header.scrolled .classicServicesToggle:hover {
+  color: var(--color-text);
+  background-color: rgba(42, 37, 32, 0.06);
+}
+
+.classicServicesMenu {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 200px;
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: 0 12px 32px rgba(42, 37, 32, 0.18);
+  padding: 0.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  z-index: 110;
+}
+
+.classicServicesLink {
+  padding: 0.6rem 0.9rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.8rem;
+  color: var(--color-text);
+  white-space: nowrap;
+  transition: background-color var(--transition);
+}
+.classicServicesLink:hover {
+  background-color: var(--color-bg-alt);
+  color: var(--color-accent);
+}
+
+.classicBook {
+  margin-left: 0.5rem;
+  font-size: 0.72rem !important;
+  padding: 0.65rem 1.4rem !important;
+}
+
+/* ── Desktop (≥1025px) + Home: nav clásico en lugar de la hamburguesa ── */
+@media (min-width: 1025px) {
+  .header.showClassicNav .classicNav {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+  .header.showClassicNav .hamburgerActions {
+    display: none;
+  }
+  .header.showClassicNav .classicLangToggle {
+    display: block;
+  }
+  .header.showClassicNav .nav {
+    display: none;
+  }
+}
+
 /* ── Tablet + Mobile: overlay fijo, sin scroll ── */
 @media (max-width: 1024px) {
   .nav {
@@ -256,7 +400,6 @@
   .navServicesMenu { gap: 0.5rem; }
   .navServicesMenuOpen { max-height: 14rem; margin-block-start: 0.7rem; }
   .navSubLink { font-size: 0.85rem; }
-  .navLangToggle { margin-block-start: 0.2rem; }
 }
 
 /* ── Small mobile ── */

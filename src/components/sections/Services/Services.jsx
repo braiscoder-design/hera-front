@@ -1,8 +1,9 @@
 import { useIntl } from 'react-intl'
 import { Link } from 'react-router-dom'
 import { useInView } from '../../../hooks/useInView'
-import { IconLashes, IconBrows, IconManicure, IconPedicure } from '../../../icons'
+import { IconLashes, IconBrows, IconManicure, IconPedicure, IconTraining } from '../../../icons'
 import { SERVICES as SERVICES_DATA } from '../../../data/services'
+import { DELAYS } from './services-constants'
 import styles from './Services.module.css'
 
 const ICONS = {
@@ -10,6 +11,7 @@ const ICONS = {
   brows: <IconBrows />,
   manicure: <IconManicure />,
   pedicure: <IconPedicure />,
+  training: <IconTraining />,
 }
 
 const SERVICES = SERVICES_DATA.map((s) => ({
@@ -17,8 +19,6 @@ const SERVICES = SERVICES_DATA.map((s) => ({
   icon: ICONS[s.key],
   imgZoom: s.key === 'pedicure',
 }))
-
-const DELAYS = ['d1', 'd2', 'd3', 'd4']
 
 export default function Services() {
   const { formatMessage } = useIntl()

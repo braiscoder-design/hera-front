@@ -3,9 +3,8 @@ import { Link } from 'react-router-dom'
 import { useInView } from '../hooks/useInView'
 import Accordion from '../components/Accordion/Accordion'
 import { IconWhatsapp, IconCalendar } from '../icons'
+import { ACCORDION_KEYS } from './service-page-constants'
 import styles from './ServicePage.module.css'
-
-const ACCORDION_KEYS = ['duration', 'includes', 'aftercare', 'faq']
 
 export default function ServicePage({ service }) {
   const { formatMessage } = useIntl()

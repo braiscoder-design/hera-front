@@ -1,27 +1,25 @@
 import { useState, useEffect, useRef } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { useIntl } from 'react-intl'
 import { useLang } from '../../i18n/IntlProvider'
-import { IconWhatsapp, IconCalendar, IconChevronDown } from '../../icons'
+import { IconChevronDown } from '../../icons'
 import { SERVICES } from '../../data/services'
+import { NAV_ITEMS } from './header-constants'
+import BookDropdown from './BookDropdown'
 import styles from './Header.module.css'
-
-const NAV_ITEMS = [
-  { id: 'nav.home',     href: '/#hero' },
-  { id: 'nav.about',    href: '/#about' },
-  { id: 'nav.services', services: true },
-  { id: 'nav.gallery',  href: '/#gallery' },
-  { id: 'nav.contact',  href: '/#contact' },
-]
 
 export default function Header() {
   const { formatMessage } = useIntl()
-  const { toggleLocale } = useLang()
+  const { locale, toggleLocale } = useLang()
+  const langAbbr = locale === 'es' ? 'GL' : 'ES'
+  const { pathname } = useLocation()
+  const isHome = pathname === '/'
+
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const [servicesOpen, setServicesOpen] = useState(false)
-  const [bookOpen, setBookOpen] = useState(false)
-  const bookRef = useRef(null)
+  const [classicServicesOpen, setClassicServicesOpen] = useState(false)
+  const classicServicesRef = useRef(null)
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 40)
@@ -29,13 +27,20 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handler)
   }, [])
 
+  // El menú a pantalla completa siempre resetea el submenú de Servicios al cerrarse
   useEffect(() => {
-    if (!bookOpen) return
+    if (!menuOpen) setServicesOpen(false)
+  }, [menuOpen])
+
+  useEffect(() => {
+    if (!classicServicesOpen) return
     const handleOutside = (e) => {
-      if (bookRef.current && !bookRef.current.contains(e.target)) setBookOpen(false)
+      if (classicServicesRef.current && !classicServicesRef.current.contains(e.target)) {
+        setClassicServicesOpen(false)
+      }
     }
     const handleEscape = (e) => {
-      if (e.key === 'Escape') setBookOpen(false)
+      if (e.key === 'Escape') setClassicServicesOpen(false)
     }
     document.addEventListener('mousedown', handleOutside)
     document.addEventListener('keydown', handleEscape)
@@ -43,25 +48,72 @@ export default function Header() {
       document.removeEventListener('mousedown', handleOutside)
       document.removeEventListener('keydown', handleEscape)
     }
-  }, [bookOpen])
-
-  // El menú a pantalla completa siempre resetea el submenú de Servicios al cerrarse
-  useEffect(() => {
-    if (!menuOpen) setServicesOpen(false)
-  }, [menuOpen])
+  }, [classicServicesOpen])
 
   const closeAll = () => {
     setMenuOpen(false)
-    setBookOpen(false)
+    setClassicServicesOpen(false)
   }
 
   return (
-    <header className={`${styles.header} ${scrolled ? styles.scrolled : ''} ${menuOpen ? styles.menuOpen : ''}`}>
+    <header
+      className={`${styles.header} ${scrolled ? styles.scrolled : ''} ${menuOpen ? styles.menuOpen : ''} ${isHome ? styles.showClassicNav : ''}`}
+    >
       <div className={`${styles.inner} container`}>
         <Link to="/" className={styles.logo} onClick={closeAll}>
           <img src="/logo/LOGO_V1-N.svg" alt="Hera The Beauty Studio" className={styles.logoImg} />
         </Link>
 
+        {/* ── Nav clásico: solo se renderiza en Home, solo se ve en desktop (CSS) ── */}
+        {isHome && (
+          <nav className={styles.classicNav}>
+            <Link to="/#hero" className={styles.classicLink}>
+              {formatMessage({ id: 'nav.home' })}
+            </Link>
+            <Link to="/#about" className={styles.classicLink}>
+              {formatMessage({ id: 'nav.about' })}
+            </Link>
+
+            <div className={styles.classicServices} ref={classicServicesRef}>
+              <button
+                type="button"
+                className={styles.classicServicesToggle}
+                onClick={() => setClassicServicesOpen((v) => !v)}
+                aria-haspopup="true"
+                aria-expanded={classicServicesOpen}
+              >
+                {formatMessage({ id: 'nav.services' })}
+                <IconChevronDown className={`${styles.chevron} ${classicServicesOpen ? styles.chevronOpen : ''}`} />
+              </button>
+              {classicServicesOpen && (
+                <div className={styles.classicServicesMenu} role="menu">
+                  {SERVICES.map((s) => (
+                    <Link
+                      key={s.slug}
+                      to={`/${s.slug}`}
+                      className={styles.classicServicesLink}
+                      role="menuitem"
+                      onClick={() => setClassicServicesOpen(false)}
+                    >
+                      {formatMessage({ id: `services.${s.key}.title` })}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            <Link to="/#gallery" className={styles.classicLink}>
+              {formatMessage({ id: 'nav.gallery' })}
+            </Link>
+            <Link to="/#contact" className={styles.classicLink}>
+              {formatMessage({ id: 'nav.contact' })}
+            </Link>
+
+            <BookDropdown triggerClassName={styles.classicBook} />
+          </nav>
+        )}
+
+        {/* ── Overlay a pantalla completa: mobile/tablet siempre, desktop solo fuera de Home ── */}
         <nav className={`${styles.nav} ${menuOpen ? styles.navOpen : ''}`}>
           {NAV_ITEMS.map((item) => {
             if (item.services) {
@@ -107,62 +159,42 @@ export default function Header() {
             )
           })}
 
-          <button className={styles.navLangToggle} onClick={toggleLocale}>
-            {formatMessage({ id: 'lang.switch' })}
+          <span className={styles.navDivider} aria-hidden="true" />
+
+          <button
+            className={styles.navLangToggle}
+            onClick={toggleLocale}
+            aria-label={formatMessage({ id: 'lang.switch' })}
+          >
+            {langAbbr}
           </button>
         </nav>
 
         <div className={styles.actions}>
-          <div className={styles.bookWrapper} ref={bookRef}>
-            <button
-              type="button"
-              className={`btn btn--primary ${styles.navBook}`}
-              onClick={() => setBookOpen((v) => !v)}
-              aria-haspopup="true"
-              aria-expanded={bookOpen}
-            >
-              {formatMessage({ id: 'nav.book' })}
-              <IconChevronDown className={`${styles.chevron} ${bookOpen ? styles.chevronOpen : ''}`} />
-            </button>
+          <div className={styles.hamburgerActions}>
+            <BookDropdown triggerClassName={styles.navBook} />
 
-            {bookOpen && (
-              <div className={styles.bookMenu} role="menu">
-                <a
-                  href="https://wa.me/34698119786"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles.bookOption}
-                  role="menuitem"
-                  onClick={() => setBookOpen(false)}
-                >
-                  <IconWhatsapp width={16} height={16} strokeWidth={1.6} stroke="#25D366" />
-                  {formatMessage({ id: 'contact.whatsapp' })}
-                </a>
-                <a
-                  href="https://reservas.koibox.cloud/por-definir"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles.bookOption}
-                  role="menuitem"
-                  onClick={() => setBookOpen(false)}
-                >
-                  <IconCalendar width={16} height={16} strokeWidth={1.6} style={{ stroke: 'var(--color-accent)' }} />
-                  {formatMessage({ id: 'contact.koibox' })}
-                </a>
-              </div>
-            )}
+            <span className={styles.navSeparator} aria-hidden="true" />
+
+            <button
+              className={`${styles.burger} ${menuOpen ? styles.burgerOpen : ''}`}
+              onClick={() => setMenuOpen((v) => !v)}
+              aria-label="Menu"
+              aria-expanded={menuOpen}
+            >
+              <span /><span />
+            </button>
           </div>
 
-          <span className={styles.navSeparator} aria-hidden="true" />
-
-          <button
-            className={`${styles.burger} ${menuOpen ? styles.burgerOpen : ''}`}
-            onClick={() => setMenuOpen((v) => !v)}
-            aria-label="Menu"
-            aria-expanded={menuOpen}
-          >
-            <span /><span />
-          </button>
+          {isHome && (
+            <button
+              className={styles.classicLangToggle}
+              onClick={toggleLocale}
+              aria-label={formatMessage({ id: 'lang.switch' })}
+            >
+              {langAbbr}
+            </button>
+          )}
         </div>
       </div>
     </header>

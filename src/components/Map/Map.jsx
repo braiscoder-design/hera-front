@@ -1,9 +1,6 @@
 import { useEffect, useRef } from 'react'
+import { LAT, LNG } from './map-constants'
 import styles from './Map.module.css'
-
-// Coordenadas de Rúa Juan Flórez 72, A Coruña (verificadas vía OpenStreetMap/Nominatim)
-const LAT = 43.363122
-const LNG = -8.408166
 
 export default function Map() {
   const containerRef = useRef(null)
