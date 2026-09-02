@@ -1,9 +1,9 @@
 import { useEffect, useRef } from 'react'
 import styles from './Map.module.css'
 
-// Coordenadas de Rúa Juan Flórez 72, A Coruña
-const LAT = 43.3677
-const LNG = -8.4064
+// Coordenadas de Rúa Juan Flórez 72, A Coruña (verificadas vía OpenStreetMap/Nominatim)
+const LAT = 43.363122
+const LNG = -8.408166
 
 export default function Map() {
   const containerRef = useRef(null)
@@ -26,13 +26,23 @@ export default function Map() {
         zoom: 16,
         zoomControl: false,
         scrollWheelZoom: false,
-        attributionControl: false,
+        attributionControl: true,
       })
 
-      // Tiles monocromáticos que encajan con la paleta beige/gris
+      map.attributionControl.setPrefix(false)
+
+      // Tiles monocromáticos (Esri Light Gray Canvas) que encajan con la paleta
+      // beige/gris. CartoDB dejó de servir "light_all" en anónimo (ahora exige
+      // API key), así que usamos el servicio gratuito de Esri: capa base +
+      // capa de referencia con los nombres de calle.
       L.tileLayer(
-        'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
-        { maxZoom: 19 }
+        'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}',
+        { maxZoom: 16, attribution: 'Tiles &copy; Esri' }
+      ).addTo(map)
+
+      L.tileLayer(
+        'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}',
+        { maxZoom: 16 }
       ).addTo(map)
 
       // Marker personalizado con el color accent del proyecto

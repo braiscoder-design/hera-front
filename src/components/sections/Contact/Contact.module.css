@@ -91,6 +91,43 @@
 }
 .btnWhatsapp:hover { opacity: 0.85; }
 
+/* ── Reserve group: fila (WhatsApp + Cómo llegar) y debajo Koibox ── */
+.reserveGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.topRow {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.btnKoibox {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  /* mismas dimensiones exteriores que .btnWhatsapp, compensando el borde de 1px */
+  padding: calc(0.9rem - 1px) calc(1.8rem - 1px);
+  background-color: transparent;
+  border: 1px solid var(--color-accent);
+  color: var(--color-accent);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: var(--radius-sm);
+  transition: background-color var(--transition), color var(--transition);
+  white-space: nowrap;
+}
+.btnKoibox:hover {
+  background-color: var(--color-accent);
+  color: #2A2520;
+}
+
 /* ── Map column ── */
 .mapCol {
   align-self: stretch;
@@ -117,5 +154,7 @@
 @media (max-width: 480px) {
   .hours { padding: 1.2rem; font-size: 0.83rem; }
   .actions { flex-direction: column; align-items: flex-start; gap: 1rem; }
-  .btnWhatsapp { width: 100%; justify-content: center; }
+  .reserveGroup { width: 100%; }
+  .topRow { flex-direction: column; align-items: flex-start; gap: 0.8rem; width: 100%; }
+  .btnWhatsapp, .btnKoibox { width: 100%; justify-content: center; }
 }

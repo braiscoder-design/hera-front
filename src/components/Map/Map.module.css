@@ -84,6 +84,13 @@
   background-color: var(--color-bg-alt) !important;
 }
 
+:global(.leaflet-control-attribution) {
+  background: rgba(247, 243, 238, 0.75) !important;
+  font-size: 0.62rem !important;
+  padding: 1px 6px !important;
+  color: var(--color-text-mid) !important;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .map { min-height: 300px; }
