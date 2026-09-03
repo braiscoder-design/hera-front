@@ -10,10 +10,11 @@
   --color-text-mid:    #6B6259;
   --color-text-light:  #A09890;
 
-  --color-accent:      #C9A96E;
-  --color-accent-soft: #F0E6D3;
-  --color-blush:       #E8D5CE;
-  --color-sage:        #C8D5C0;
+  --color-accent:       #C9A96E;
+  --color-accent-light: #D4B896;
+  --color-accent-soft:  #F0E6D3;
+  --color-blush:        #E8D5CE;
+  --color-sage:         #C8D5C0;
 
   --font-serif:   'Cormorant Garamond', Georgia, serif;
   --font-sans:    'Inter', system-ui, sans-serif;

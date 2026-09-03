@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useIntl } from 'react-intl'
+import HeroBookDropdown from './HeroBookDropdown'
 import styles from './Hero.module.css'
 
 export default function Hero() {
@@ -39,14 +40,7 @@ export default function Hero() {
             <a href="#services" className="btn btn--primary">
               {formatMessage({ id: 'hero.cta' })}
             </a>
-            <a
-              href="https://wa.me/34698119786"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn--outline"
-            >
-              {formatMessage({ id: 'hero.book' })}
-            </a>
+            <HeroBookDropdown />
           </div>
         </div>
       </div>

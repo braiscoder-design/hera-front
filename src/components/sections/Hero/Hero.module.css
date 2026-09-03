@@ -51,16 +51,16 @@
 }
 
 .label {
-  font-family: var(--font-sans);
+  font-family: var(--font-sans), sans-serif;
   font-size: 0.82rem;
   font-weight: 500;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--color-accent-light, #D4B896);
+  color: var(--color-accent-light);
 }
 
 .tagline {
-  font-family: var(--font-serif);
+  font-family: var(--font-serif), serif;
   font-size: clamp(3.4rem, 7vw, 6.5rem);
   font-weight: 300;
   line-height: 1.05;
@@ -95,6 +95,86 @@
   color: var(--color-text);
 }
 
+/* ── Desplegable de reserva (WhatsApp / Koibox) ──
+   Versión propia del Hero (no comparte estilos con el BookDropdown del
+   Header): cristal translúcido tipo "Liquid Glass" + entrada en cascada,
+   cada opción "nace" detrás de la anterior en vez de aparecer de golpe. */
+.bookWrapper {
+  position: relative;
+  --cascade-step: 0.4s;
+}
+
+.chevron {
+  transition: transform var(--transition);
+}
+.chevronOpen {
+  transform: rotate(180deg);
+}
+
+.bookMenu {
+  position: absolute;
+  top: calc(100% + 0.75rem);
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 240px;
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  z-index: 5;
+  /* Cristal: fondo semitransparente oscuro (para que funcione sobre el
+     vídeo del hero, claro u oscuro) + blur + saturación de más, que es lo
+     que da el efecto "Liquid Glass" en vez de un simple fondo difuminado. */
+  background-color: rgba(30, 26, 22, 0.45);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  clip-path: inset(0 0 100% 0 round var(--radius-md));
+  animation: bookMenuReveal calc(var(--cascade-step) * 2) ease-out forwards;
+}
+
+.bookOption {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.9rem 1.15rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #F7F3EE;
+  text-decoration: none;
+  white-space: nowrap;
+  position: relative;
+  opacity: 0;
+  transform: translateY(-100%);
+  animation: bookOptionCascade var(--cascade-step) cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+.bookOption:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+}
+.bookOption svg { flex-shrink: 0; }
+
+/* La 1ª opción (WhatsApp) sale primero y por encima; la 2ª (Koibox) nace
+   detrás de ella y solo empieza a moverse cuando la 1ª ya ha llegado a su
+   sitio (animation-delay = duración completa de la 1ª, no solapan). */
+.bookOption:nth-child(1) { z-index: 2; animation-delay: 0s; }
+.bookOption:nth-child(2) {
+  z-index: 1;
+  animation-delay: var(--cascade-step);
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+@keyframes bookMenuReveal {
+  to { clip-path: inset(0 0 0 0 round var(--radius-md)); }
+}
+@keyframes bookOptionCascade {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bookMenu { animation: none; clip-path: none; }
+  .bookOption { animation: none; opacity: 1; transform: none; }
+}
 
 /* ── Scroll hint ── */
 .scrollHint {
