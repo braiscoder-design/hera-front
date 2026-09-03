@@ -5,6 +5,9 @@
 export const SITE_URL = 'https://herathebeautystudio.com'
 export const OG_IMAGE = `${SITE_URL}/images/hero-bg.jpg`
 
+// Mapeo de locale interno -> og:locale (formato idioma_PAÍS de Open Graph)
+export const OG_LOCALES = { es: 'es_ES', gl: 'gl_ES', en: 'en_US' }
+
 export const STRUCTURED_DATA = {
   '@context': 'https://schema.org',
   '@type': 'BeautySalon',

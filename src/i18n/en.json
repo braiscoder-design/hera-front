@@ -1,0 +1,97 @@
+{
+  "nav.home": "Home",
+  "nav.about": "About",
+  "nav.services": "Services",
+  "nav.gallery": "Gallery",
+  "nav.contact": "Contact",
+  "nav.book": "Book now",
+
+  "hero.tagline": "Less drama, more lashes.",
+  "hero.subtitle": "Specialists in eyelash extensions, brow design and hand & foot care in A Coruña.",
+  "hero.cta": "Discover our services",
+  "hero.book": "Book an appointment",
+
+  "about.label": "Who we are",
+  "about.title": "The art of enhancing your natural beauty",
+  "about.body": "At Hera The Beauty Studio we believe every look has its own story. We're a team of professionals specialised in eye aesthetics, brow care and hand & foot treatments. Our studio, located in the heart of A Coruña, is a space designed to make you feel cared for, comfortable and completely yourself.",
+  "about.values.1": "Precision",
+  "about.values.2": "Care",
+  "about.values.3": "Naturalness",
+
+  "services.label": "Our services",
+  "services.title": "Everything you need to shine",
+  "services.subtitle": "Personalised treatments tailored to your look and lifestyle.",
+  "services.viewMore": "View more",
+
+  "services.lashes.title": "Lashes",
+  "services.lashes.desc": "Volume, classic and hybrid extensions, plus lash lifting. We enhance your look naturally and long-lastingly.",
+  "services.lashes.items": "Classic extensions · Russian volume · Hybrid · Lifting & tint",
+
+  "services.brows.title": "Brows",
+  "services.brows.desc": "Brow design, lamination and henna. We define your arch to frame your look with millimetre precision.",
+  "services.brows.items": "Brow design · Lamination · Henna · Waxing",
+
+  "services.manicure.title": "Manicure",
+  "services.manicure.desc": "From semi-permanent manicures to bespoke nail art. Your hands deserve attention to detail.",
+  "services.manicure.items": "Semi-permanent · Gel · Acrylic · Nail art",
+
+  "services.pedicure.title": "Pedicure",
+  "services.pedicure.desc": "Complete care for your feet with moisturising treatments and long-lasting polish.",
+  "services.pedicure.items": "Full pedicure · Semi-permanent · Moisturising treatment",
+
+  "services.training.title": "Training",
+  "services.training.desc": "Courses and training for those who want to learn and turn beauty into a profession. More information on dates and content coming soon.",
+  "services.training.items": "In-person courses · Small groups · Certificate of attendance",
+
+  "services.lashes.tagline": "Enhance your look naturally and long-lastingly.",
+  "services.brows.tagline": "The perfect frame for your look.",
+  "services.manicure.tagline": "Attention to detail in every polish.",
+  "services.pedicure.tagline": "Complete care for flawless feet.",
+  "services.training.tagline": "Learn from the hands of professionals.",
+
+  "servicePage.pending": "Sample page — final content and photography still to be confirmed.",
+  "servicePage.infoLabel": "More information",
+  "servicePage.infoTitle": "What you need to know",
+  "servicePage.ctaTitle": "Ready for your appointment?",
+  "servicePage.ctaBody": "Write to us and we'll help you choose the perfect treatment for you.",
+  "servicePage.back": "Back to services",
+
+  "servicePage.accordion.duration.title": "Duration and estimated price",
+  "servicePage.accordion.duration.body": "Sample content: here we'll indicate the average session length and an estimated price range for this treatment.",
+  "servicePage.accordion.includes.title": "What the session includes",
+  "servicePage.accordion.includes.body": "Sample content: here we'll detail step by step what the treatment involves and which products or techniques are used.",
+  "servicePage.accordion.aftercare.title": "Aftercare",
+  "servicePage.accordion.aftercare.body": "Sample content: here we'll explain the aftercare recommendations to make the results last longer.",
+  "servicePage.accordion.faq.title": "Frequently asked questions",
+  "servicePage.accordion.faq.body": "Sample content: here we'll answer the most common questions about this treatment.",
+
+  "values.tranquility": "Tranquility",
+  "values.precision": "Precision",
+  "values.beauty": "Beauty",
+
+  "gallery.label": "Gallery",
+  "gallery.title": "Our work speaks for itself",
+  "gallery.subtitle": "Follow us on Instagram to see our latest creations.",
+  "gallery.cta": "View on Instagram",
+
+  "contact.label": "Visit us",
+  "contact.title": "We're waiting for you in A Coruña",
+  "contact.address": "Calle Juan Flórez, 72 Bajo",
+  "contact.city": "15005 · A Coruña",
+  "contact.phone": "698 119 786",
+  "contact.email": "herathebeautystudio@gmail.com",
+  "contact.hours.title": "Opening hours",
+  "contact.hours.weekdays": "Monday to Friday: 10:00 – 20:00",
+  "contact.hours.saturday": "Saturday: 10:00 – 14:00",
+  "contact.whatsapp": "Message us on WhatsApp",
+  "contact.koibox": "Book via Koibox",
+  "contact.directions": "Get directions",
+
+  "footer.tagline": "Less drama, more lashes.",
+  "footer.rights": "© 2025 Hera The Beauty Studio. All rights reserved.",
+  "footer.legal": "Legal notice",
+  "footer.privacy": "Privacy",
+  "footer.cookies": "Cookies",
+
+  "lang.select": "Select language"
+}

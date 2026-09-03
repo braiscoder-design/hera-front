@@ -1,17 +1,15 @@
 import { useState, useEffect, useRef } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { useIntl } from 'react-intl'
-import { useLang } from '../../i18n/IntlProvider'
 import { IconChevronDown } from '../../icons'
 import { SERVICES } from '../../data/services'
 import { NAV_ITEMS } from './header-constants'
 import BookDropdown from './BookDropdown'
+import LangDropdown from './LangDropdown'
 import styles from './Header.module.css'
 
 export default function Header() {
   const { formatMessage } = useIntl()
-  const { locale, toggleLocale } = useLang()
-  const langAbbr = locale === 'es' ? 'GL' : 'ES'
   const { pathname } = useLocation()
   const isHome = pathname === '/'
 
@@ -161,13 +159,7 @@ export default function Header() {
 
           <span className={styles.navDivider} aria-hidden="true" />
 
-          <button
-            className={styles.navLangToggle}
-            onClick={toggleLocale}
-            aria-label={formatMessage({ id: 'lang.switch' })}
-          >
-            {langAbbr}
-          </button>
+          <LangDropdown triggerClassName={styles.navLangToggle} />
         </nav>
 
         <div className={styles.actions}>
@@ -187,13 +179,7 @@ export default function Header() {
           </div>
 
           {isHome && (
-            <button
-              className={styles.classicLangToggle}
-              onClick={toggleLocale}
-              aria-label={formatMessage({ id: 'lang.switch' })}
-            >
-              {langAbbr}
-            </button>
+            <LangDropdown triggerClassName={styles.classicLangToggle} />
           )}
         </div>
       </div>

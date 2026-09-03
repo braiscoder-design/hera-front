@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet-async'
 import { useIntl } from 'react-intl'
 import { useLang } from '../../i18n/IntlProvider'
-import { SITE_URL, OG_IMAGE, STRUCTURED_DATA } from './seo-constants'
+import { SITE_URL, OG_IMAGE, OG_LOCALES, STRUCTURED_DATA } from './seo-constants'
 
 export default function SEO() {
   const { formatMessage } = useIntl()
@@ -9,7 +9,7 @@ export default function SEO() {
 
   const title = 'Hera The Beauty Studio | Pestañas, Cejas y Uñas en A Coruña'
   const description = formatMessage({ id: 'hero.subtitle' })
-  const canonical = `${SITE_URL}${locale === 'gl' ? '?lang=gl' : ''}`
+  const canonical = `${SITE_URL}${locale === 'es' ? '' : `?lang=${locale}`}`
 
   return (
     <Helmet>
@@ -29,7 +29,7 @@ export default function SEO() {
       <meta property="og:image" content={OG_IMAGE} />
       <meta property="og:image:width" content="1400" />
       <meta property="og:image:height" content="933" />
-      <meta property="og:locale" content={locale === 'gl' ? 'gl_ES' : 'es_ES'} />
+      <meta property="og:locale" content={OG_LOCALES[locale]} />
 
       {/* Twitter Card */}
       <meta name="twitter:card" content="summary_large_image" />
