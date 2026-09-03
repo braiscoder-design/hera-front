@@ -25,33 +25,107 @@
   line-height: 1.75;
 }
 
-/* ── Grid ──
-   Flexbox en vez de CSS Grid: con 5 servicios (no múltiplo de las 4
-   columnas), un grid de columnas fijas obliga a la última tarjeta a
-   ocupar toda la fila o deja celdas vacías con el color de fondo del
-   grid. Con flex-wrap y flex-grow:0, cada tarjeta mide siempre lo mismo
-   y, si sobra sitio en la fila, simplemente queda hueco (sin color), no
-   una tarjeta más grande. */
+/* ── Carrusel (desktop, Swiper) ──
+   Con 10 servicios, un grid de columnas fijas obliga a tarjetas cada vez
+   más estrechas. En desktop se usa Swiper (swiper/react) en vez de una
+   solución hecha a mano: tarjeta activa centrada, vecinas asomando a los
+   lados y ligeramente atenuadas, flechas + paginación por puntos, y clic
+   en una vecina la trae al frente (slideToClickedSlide). La animación de
+   deslizamiento la resuelve la librería (transform + easing propio), que
+   es justo lo que fallaba en la versión anterior. En tablet/móvil
+   (ver media queries al final) no se monta Swiper — se renderiza en su
+   lugar la rejilla plana de siempre, sin carrusel. */
+.carousel {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.swiper {
+  flex: 1;
+  min-width: 0;
+  padding-block: 1rem;
+}
+
+/* Tarjeta activa al frente; las demás, un pelín más pequeñas y apagadas
+   para reforzar el foco en la que está centrada (ver referencia). */
+.swiper :global(.swiper-slide) {
+  height: auto;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+.swiper :global(.swiper-slide:not(.swiper-slide-active)) {
+  opacity: 0.6;
+  transform: scale(0.93);
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin-block-start: 1.75rem;
+}
+.pagination :global(.swiper-pagination-bullet) {
+  width: 0.5rem;
+  height: 0.5rem;
+  margin: 0 !important;
+  background-color: var(--color-border);
+  opacity: 1;
+  transition: background-color var(--transition), transform var(--transition);
+}
+.pagination :global(.swiper-pagination-bullet-active) {
+  background-color: var(--color-accent);
+  transform: scale(1.3);
+}
+
 .grid {
   display: flex;
   flex-wrap: wrap;
-  gap: 1.5px;
-  background-color: var(--color-border);
-  border: 1.5px solid var(--color-border);
-  border-radius: var(--radius-md);
-  overflow: hidden;
+  gap: 1.25rem;
+}
+
+.arrow {
+  flex: 0 0 auto;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color var(--transition), border-color var(--transition), opacity var(--transition), transform 0.2s ease;
+}
+.arrowPrev svg { transform: rotate(90deg); }
+.arrowNext svg { transform: rotate(-90deg); }
+.arrow:hover:not(:disabled) {
+  background-color: var(--color-text);
+  border-color: var(--color-text);
+  color: var(--color-bg);
+}
+.arrow:active:not(:disabled) { transform: scale(0.94); }
+.arrow:disabled {
+  opacity: 0.35;
+  cursor: default;
 }
 
 /* ── Card ── */
 .card {
   background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
   display: flex;
   flex-direction: column;
-  transition: background-color var(--transition);
+  transition: background-color var(--transition), box-shadow var(--transition);
   overflow: hidden;
-  flex: 0 0 calc(20% - 1.2px);
+  flex: 0 0 260px;
 }
-.card:hover { background-color: var(--color-bg); }
+.card:hover {
+  background-color: var(--color-bg);
+  box-shadow: 0 12px 28px rgba(42, 37, 32, 0.08);
+}
 
 .cardImg {
   width: 100%;
@@ -64,10 +138,26 @@
   object-fit: cover;
   display: block;
   transition: transform 0.5s ease;
+  -webkit-user-drag: none;
 }
 .card:hover .cardImg img { transform: scale(1.05); }
 .imgZoom { transform: scale(1.2); }
 .card:hover .cardImg .imgZoom { transform: scale(1.25); }
+
+/* Servicios sin foto todavía: bloque de color con el icono en grande */
+.cardImgPlaceholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-bg-alt);
+  color: var(--color-accent);
+}
+.cardImgPlaceholder svg {
+  width: 42%;
+  height: 42%;
+}
 
 .cardBody {
   padding: 2rem 1.8rem;
@@ -89,6 +179,8 @@
   font-size: 1.5rem;
   font-weight: 400;
   color: var(--color-text);
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 
 .cardDesc {
@@ -121,9 +213,12 @@
   color: var(--color-bg) !important;
 }
 
-/* ── Tablet (≤1024px) — 2 cols ── */
+/* ── Tablet (≤1024px) — 2 cols, sin carrusel ──
+   Por debajo de 1025px Services.jsx ni siquiera monta Swiper: renderiza
+   directamente esta rejilla plana (ver isDesktop). Solo queda ajustar el
+   ancho de tarjeta a 2 columnas. */
 @media (max-width: 1024px) {
-  .card { flex-basis: calc(50% - 0.75px); }
+  .card { flex-basis: calc(50% - 0.625rem); }
 }
 
 /* ── Tablet small / mobile (≤768px) ── */
@@ -135,6 +230,7 @@
 
 /* ── Small mobile (≤480px) — 1 col ── */
 @media (max-width: 480px) {
+  .grid { gap: 1rem; }
   .card { flex-basis: 100%; }
   .cardImg { aspect-ratio: 16/9; }
   .cardBody { padding: 1.2rem 1rem; gap: 0.75rem; }

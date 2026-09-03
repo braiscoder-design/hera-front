@@ -2,6 +2,7 @@ import { useIntl } from 'react-intl'
 import { Link } from 'react-router-dom'
 import { useInView } from '../hooks/useInView'
 import Accordion from '../components/Accordion/Accordion'
+import ServiceIcon from '../components/ServiceIcon/ServiceIcon'
 import { IconWhatsapp, IconCalendar } from '../icons'
 import { ACCORDION_KEYS } from './service-page-constants'
 import styles from './ServicePage.module.css'
@@ -24,10 +25,16 @@ export default function ServicePage({ service }) {
     <>
       <section
         ref={heroRef}
-        className={styles.hero}
-        style={{ backgroundImage: `url(${img})` }}
+        className={`${styles.hero} ${!img ? styles.heroNoImage : ''}`}
+        style={img ? { backgroundImage: `url(${img})` } : undefined}
       >
-        <div className={styles.heroOverlay} />
+        {img ? (
+          <div className={styles.heroOverlay} />
+        ) : (
+          <div className={styles.heroIconBg} aria-hidden="true">
+            <ServiceIcon serviceKey={key} />
+          </div>
+        )}
         <div className={`${styles.heroInner} container`}>
           <Link
             to="/#services"

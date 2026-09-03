@@ -22,14 +22,8 @@
   "services.title": "Everything you need to shine",
   "services.subtitle": "Personalised treatments tailored to your look and lifestyle.",
   "services.viewMore": "View more",
-
-  "services.lashes.title": "Lashes",
-  "services.lashes.desc": "Volume, classic and hybrid extensions, plus lash lifting. We enhance your look naturally and long-lastingly.",
-  "services.lashes.items": "Classic extensions · Russian volume · Hybrid · Lifting & tint",
-
-  "services.brows.title": "Brows",
-  "services.brows.desc": "Brow design, lamination and henna. We define your arch to frame your look with millimetre precision.",
-  "services.brows.items": "Brow design · Lamination · Henna · Waxing",
+  "services.scrollPrev": "Previous services",
+  "services.scrollNext": "Next services",
 
   "services.manicure.title": "Manicure",
   "services.manicure.desc": "From semi-permanent manicures to bespoke nail art. Your hands deserve attention to detail.",
@@ -39,14 +33,47 @@
   "services.pedicure.desc": "Complete care for your feet with moisturising treatments and long-lasting polish.",
   "services.pedicure.items": "Full pedicure · Semi-permanent · Moisturising treatment",
 
+  "services.threading.title": "Threading",
+  "services.threading.desc": "Ancient hair removal technique using cotton thread, precise and gentle on the skin. Ideal for shaping brows, upper lip and other areas of the face.",
+  "services.threading.items": "Brows · Upper lip · Chin · Facial shaping",
+
+  "services.brows.title": "Brow treatments",
+  "services.brows.desc": "Brow design, lamination and henna. We define your arch to frame your look with millimetre precision.",
+  "services.brows.items": "Brow design · Lamination · Henna · Waxing",
+
+  "services.lashLifting.title": "Lash lifting",
+  "services.lashLifting.desc": "We curl and enhance your natural lashes with a long-lasting effect, no extensions needed. Includes nourishment and tint for a more intense look.",
+  "services.lashLifting.items": "Lifting · Tint · Lash nourishment",
+
+  "services.lashExtensions.title": "Lash extensions",
+  "services.lashExtensions.desc": "Classic, Russian volume and hybrid extensions for a fuller, longer look, fully tailored to you.",
+  "services.lashExtensions.items": "Classic · Russian volume · Hybrid",
+
+  "services.lips.title": "Lip treatment",
+  "services.lips.desc": "Hydration and natural volume for fuller, more defined lips, with non-invasive treatments.",
+  "services.lips.items": "Hydration · Natural volume · Exfoliation",
+
+  "services.micropigmentation.title": "Micropigmentation",
+  "services.micropigmentation.desc": "Semi-permanent technique to define brows or other areas with a natural, long-lasting result.",
+  "services.micropigmentation.items": "Brows · Powder effect · Hair-stroke",
+
+  "services.pressotherapy.title": "Pressotherapy",
+  "services.pressotherapy.desc": "Drainage treatment using controlled pressure that improves circulation and reduces the feeling of tired legs.",
+  "services.pressotherapy.items": "Lymphatic drainage · Circulation · Tired legs",
+
   "services.training.title": "Training",
   "services.training.desc": "Courses and training for those who want to learn and turn beauty into a profession. More information on dates and content coming soon.",
   "services.training.items": "In-person courses · Small groups · Certificate of attendance",
 
-  "services.lashes.tagline": "Enhance your look naturally and long-lastingly.",
-  "services.brows.tagline": "The perfect frame for your look.",
   "services.manicure.tagline": "Attention to detail in every polish.",
   "services.pedicure.tagline": "Complete care for flawless feet.",
+  "services.threading.tagline": "Millimetre precision, thread by thread.",
+  "services.brows.tagline": "The perfect frame for your look.",
+  "services.lashLifting.tagline": "Your look, more intense and natural.",
+  "services.lashExtensions.tagline": "Fullness and length, tailored to you.",
+  "services.lips.tagline": "Hydrated lips with natural volume.",
+  "services.micropigmentation.tagline": "Natural definition that lasts.",
+  "services.pressotherapy.tagline": "Lightness and wellbeing for your legs.",
   "services.training.tagline": "Learn from the hands of professionals.",
 
   "servicePage.pending": "Sample page — final content and photography still to be confirmed.",

@@ -22,14 +22,8 @@
   "services.title": "Todo lo que necesitas para brillar",
   "services.subtitle": "Tratamientos personalizados adaptados a tu mirada y estilo de vida.",
   "services.viewMore": "Ver más",
-
-  "services.lashes.title": "Pestañas",
-  "services.lashes.desc": "Extensiones volumen, pelo a pelo, híbridas y lifting de pestañas. Realzamos tu mirada de forma natural y duradera.",
-  "services.lashes.items": "Extensiones pelo a pelo · Volumen ruso · Híbridas · Lifting & tinte",
-
-  "services.brows.title": "Cejas",
-  "services.brows.desc": "Diseño, laminado y henna de cejas. Definimos tu arco para enmarcar tu mirada con precisión milimétrica.",
-  "services.brows.items": "Diseño de cejas · Laminado · Henna · Depilación",
+  "services.scrollPrev": "Servicios anteriores",
+  "services.scrollNext": "Servicios siguientes",
 
   "services.manicure.title": "Manicura",
   "services.manicure.desc": "Desde la manicura semipermanente hasta nail art a medida. Tus manos merecen atención al detalle.",
@@ -39,14 +33,47 @@
   "services.pedicure.desc": "Cuidado completo para tus pies con tratamientos de hidratación y esmaltado duradero.",
   "services.pedicure.items": "Pedicura completa · Semipermanente · Tratamiento hidratante",
 
+  "services.threading.title": "Depilación con hilo",
+  "services.threading.desc": "Técnica milenaria de depilación con hilo de algodón, precisa y respetuosa con la piel. Ideal para perfilar cejas, labio superior y otras zonas del rostro.",
+  "services.threading.items": "Cejas · Labio superior · Mentón · Perfilado facial",
+
+  "services.brows.title": "Tratamientos de cejas",
+  "services.brows.desc": "Diseño, laminado y henna de cejas. Definimos tu arco para enmarcar tu mirada con precisión milimétrica.",
+  "services.brows.items": "Diseño de cejas · Laminado · Henna · Depilación",
+
+  "services.lashLifting.title": "Lifting de pestañas",
+  "services.lashLifting.desc": "Curvamos y realzamos tus pestañas naturales con un efecto duradero, sin necesidad de extensiones. Incluye nutrición y tinte para una mirada más intensa.",
+  "services.lashLifting.items": "Lifting · Tinte · Nutrición de pestañas",
+
+  "services.lashExtensions.title": "Extensiones de pestañas",
+  "services.lashExtensions.desc": "Extensiones pelo a pelo, volumen ruso e híbridas para una mirada con más densidad y longitud, totalmente personalizada.",
+  "services.lashExtensions.items": "Pelo a pelo · Volumen ruso · Híbridas",
+
+  "services.lips.title": "Tratamiento para labios",
+  "services.lips.desc": "Hidratación y volumen natural para unos labios más definidos y jugosos, con tratamientos no invasivos.",
+  "services.lips.items": "Hidratación · Volumen natural · Exfoliación",
+
+  "services.micropigmentation.title": "Micropigmentación",
+  "services.micropigmentation.desc": "Técnica semipermanente para definir cejas u otras zonas con un resultado natural y duradero.",
+  "services.micropigmentation.items": "Cejas · Efecto polvo · Pelo a pelo",
+
+  "services.pressotherapy.title": "Presoterapia",
+  "services.pressotherapy.desc": "Tratamiento de drenaje mediante presión controlada que mejora la circulación y reduce la sensación de piernas cansadas.",
+  "services.pressotherapy.items": "Drenaje linfático · Circulación · Piernas cansadas",
+
   "services.training.title": "Formaciones",
   "services.training.desc": "Cursos y formaciones para quienes quieren aprender y profesionalizarse en el mundo de la estética. Próximamente más información sobre fechas y contenidos.",
   "services.training.items": "Cursos presenciales · Grupos reducidos · Certificado de asistencia",
 
-  "services.lashes.tagline": "Realza tu mirada de forma natural y duradera.",
-  "services.brows.tagline": "El marco perfecto para tu mirada.",
   "services.manicure.tagline": "Atención al detalle en cada esmaltado.",
   "services.pedicure.tagline": "Cuidado completo para pies impecables.",
+  "services.threading.tagline": "Precisión milimétrica, hilo a hilo.",
+  "services.brows.tagline": "El marco perfecto para tu mirada.",
+  "services.lashLifting.tagline": "Tu mirada, más intensa y natural.",
+  "services.lashExtensions.tagline": "Densidad y longitud a tu medida.",
+  "services.lips.tagline": "Labios hidratados y con volumen natural.",
+  "services.micropigmentation.tagline": "Definición natural que dura.",
+  "services.pressotherapy.tagline": "Ligereza y bienestar para tus piernas.",
   "services.training.tagline": "Aprende de la mano de profesionales.",
 
   "servicePage.pending": "Página de ejemplo — contenido y fotografías definitivas pendientes de confirmar.",
