@@ -1,10 +1,18 @@
 .hero {
   position: relative;
+  /* z-index explícito: crea su propio contexto de apilamiento para que el
+     desplegable de reserva (que puede sobresalir del propio Hero, sobre
+     todo en móvil con min-height:auto) quede siempre por encima de la
+     siguiente sección, en vez de competir por orden de documento. */
+  z-index: 2;
   min-height: 100dvh;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  overflow: hidden;
+  /* Sin overflow:hidden aquí: el vídeo de fondo ya se recorta solo
+     (.videoBg tiene su propio overflow:hidden con inset:0), y si lo
+     dejamos aquí también recorta el desplegable cuando sobresale del
+     Hero. */
   padding-block-start: 6rem;
 }
 
