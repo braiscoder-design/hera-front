@@ -9,8 +9,15 @@ import styles from './Header.module.css'
  * BookDropdown: cada instancia lleva su propio estado y se cierra al hacer
  * clic fuera o pulsar Escape. Se usa tanto en el nav clásico de Home
  * (desktop) como en el overlay de hamburguesa.
+ *
+ * `menuUp`: el overlay de hamburguesa (.nav) tiene overflow-y:auto para
+ * poder hacer scroll con Servicios expandido, lo que también recorta el
+ * eje X. Como este selector es el último elemento del overlay, un menú que
+ * se abre hacia abajo puede quedar recortado sin forma de hacer scroll
+ * hasta él. Con `menuUp` se abre hacia arriba, dentro del espacio que ya
+ * está visible, evitando el recorte.
  */
-export default function LangDropdown({ triggerClassName = '' }) {
+export default function LangDropdown({ triggerClassName = '', menuUp = false }) {
   const { formatMessage } = useIntl()
   const { locale, setLocale } = useLang()
   const [open, setOpen] = useState(false)
@@ -48,7 +55,7 @@ export default function LangDropdown({ triggerClassName = '' }) {
       </button>
 
       {open && (
-        <div className={styles.langMenu} role="menu">
+        <div className={`${styles.langMenu} ${menuUp ? styles.langMenuUp : ''}`} role="menu">
           {LANGUAGES.map((l) => (
             <button
               key={l.code}

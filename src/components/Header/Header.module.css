@@ -225,6 +225,13 @@
   z-index: 110;
 }
 
+/* Overlay móvil: se abre hacia arriba en vez de hacia abajo (ver JSDoc de
+   LangDropdown) para no quedar recortado por el overflow-y:auto de .nav. */
+.langMenuUp {
+  top: auto;
+  bottom: calc(100% + 10px);
+}
+
 .langOption {
   padding: 0.6rem 0.85rem;
   border-radius: var(--radius-sm);

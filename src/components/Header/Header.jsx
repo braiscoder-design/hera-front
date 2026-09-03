@@ -159,7 +159,7 @@ export default function Header() {
 
           <span className={styles.navDivider} aria-hidden="true" />
 
-          <LangDropdown triggerClassName={styles.navLangToggle} />
+          <LangDropdown triggerClassName={styles.navLangToggle} menuUp={servicesOpen} />
         </nav>
 
         <div className={styles.actions}>
