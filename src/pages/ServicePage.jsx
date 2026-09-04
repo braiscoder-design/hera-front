@@ -16,7 +16,13 @@ import styles from './ServicePage.module.css'
 export default function ServicePage({ service }) {
   const { formatMessage } = useIntl()
   const [heroRef, heroInView] = useInView()
-  const [introRef, introInView] = useInView()
+  // threshold bajo (igual que gridRef en Services/Gallery): esta sección
+  // incluye el listado de subsecciones, que en manicura (21 ítems) y
+  // extensiones de pestañas (15 ítems) puede ser mucho más alto que el
+  // viewport en móvil. Con el 0.15 por defecto, el 15% del alto total de
+  // la sección casi nunca llega a estar visible a la vez y "introInView"
+  // se queda en false para siempre — el contenido no se revela nunca.
+  const [introRef, introInView] = useInView({ threshold: 0.05 })
   // const [infoRef, infoInView] = useInView()
   const [ctaRef, ctaInView] = useInView()
 
