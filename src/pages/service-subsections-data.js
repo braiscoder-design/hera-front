@@ -48,10 +48,10 @@ export const SERVICE_SUBSECTIONS = {
   lashLifting: [
     { id: 'classic', duration: 60, price: 55, desc: true },
     { id: 'flash', duration: 30, price: 65, desc: true },
-  ],
-  lashExtensions: [
     { id: 'tintTwoZones', duration: 15, price: 30, desc: false },
     { id: 'tintLower', duration: 10, price: 10, desc: false },
+  ],
+  lashExtensions: [
     { id: 'fullSet1D', duration: 90, price: 85, desc: false },
     { id: 'fullSet2D', duration: 90, price: 95, desc: false },
     { id: 'fullSet3D', duration: 90, price: 105, desc: false },
