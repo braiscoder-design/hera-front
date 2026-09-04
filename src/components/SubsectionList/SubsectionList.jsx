@@ -33,8 +33,8 @@ export default function SubsectionList({ serviceKey, items }) {
 
         const meta = (
           <span className={styles.meta}>
-            {item.duration ? <span className={styles.pill}>{item.duration} min</span> : null}
             <span className={styles.pill}>{item.price} €</span>
+            {item.duration ? <span className={styles.pill}>{item.duration} min</span> : null}
           </span>
         )
 
