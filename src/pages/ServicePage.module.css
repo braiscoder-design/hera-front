@@ -105,6 +105,13 @@
   color: var(--color-accent);
 }
 
+/* ── Subsecciones (koibox) ── */
+.subsectionsWrap {
+  max-width: 46rem;
+  margin-inline: auto;
+  margin-block-start: var(--spacing-lg);
+}
+
 /* ── Info / acordeón ── */
 .infoHeader {
   text-align: center;

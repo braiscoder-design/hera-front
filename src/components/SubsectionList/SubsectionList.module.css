@@ -1,0 +1,93 @@
+.list {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  border-block-end: 1px solid var(--color-border);
+}
+.row:first-child {
+  border-block-start: 1px solid var(--color-border);
+}
+
+.trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding-block: 1rem;
+  text-align: left;
+  transition: color var(--transition);
+}
+.trigger:hover .name {
+  color: var(--color-accent);
+}
+
+/* Fila sin descripción (koibox no la ofrece): mismo aspecto, sin botón ni
+   posibilidad de desplegar. */
+.plainRow {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding-block: 1rem;
+}
+
+.name {
+  flex: 1;
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--color-text);
+  transition: color var(--transition);
+}
+
+.meta {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.pill {
+  flex-shrink: 0;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-sm);
+  background-color: var(--color-accent-soft);
+  color: var(--color-text-mid);
+  font-family: var(--font-sans), sans-serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.icon {
+  flex-shrink: 0;
+  color: var(--color-accent);
+  transition: transform var(--transition);
+}
+.iconOpen {
+  transform: rotate(45deg);
+}
+
+.panel {
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+
+.desc {
+  padding-block-end: 1.1rem;
+  padding-inline-end: 2.5rem;
+  font-size: 0.9rem;
+  font-weight: 300;
+  line-height: 1.65;
+  color: var(--color-text-mid);
+}
+
+@media (max-width: 640px) {
+  .trigger, .plainRow { align-items: flex-start; flex-wrap: wrap; }
+  .name { font-size: 0.92rem; }
+  .meta { order: 3; flex-basis: 100%; margin-block-start: 0.35rem; }
+  .icon { margin-inline-start: auto; }
+  .desc { padding-inline-end: 0; font-size: 0.86rem; }
+}

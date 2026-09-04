@@ -1,25 +1,42 @@
 import { useIntl } from 'react-intl'
 import { Link } from 'react-router-dom'
 import { useInView } from '../hooks/useInView'
-import Accordion from '../components/Accordion/Accordion'
+// Acordeón "Más información" (duración/precio, incluye, cuidados, FAQ):
+// oculto temporalmente (ver sección comentada más abajo) hasta que se
+// decida si se va a usar. No se borra por si se retoma más adelante.
+// import Accordion from '../components/Accordion/Accordion'
 import ServiceIcon from '../components/ServiceIcon/ServiceIcon'
+import SubsectionList from '../components/SubsectionList/SubsectionList'
 import { IconWhatsapp, IconCalendar } from '../icons'
-import { ACCORDION_KEYS } from './service-page-constants'
+// import { ACCORDION_KEYS } from './service-page-constants'
+import { SUBSECTIONS_SERVICE_KEYS } from './service-page-constants'
+import { SERVICE_SUBSECTIONS } from './service-subsections-data'
 import styles from './ServicePage.module.css'
 
 export default function ServicePage({ service }) {
   const { formatMessage } = useIntl()
   const [heroRef, heroInView] = useInView()
   const [introRef, introInView] = useInView()
-  const [infoRef, infoInView] = useInView()
+  // const [infoRef, infoInView] = useInView()
   const [ctaRef, ctaInView] = useInView()
 
   const { key, img } = service
 
-  const accordionItems = ACCORDION_KEYS.map((k) => ({
-    title: formatMessage({ id: `servicePage.accordion.${k}.title` }),
-    body: formatMessage({ id: `servicePage.accordion.${k}.body` }),
-  }))
+  const hasSubsections = SUBSECTIONS_SERVICE_KEYS.includes(key)
+
+  // Contenido del acordeón "Más información", oculto temporalmente junto
+  // con la sección de abajo.
+  // const accordionItems = ACCORDION_KEYS.map((k) => {
+  //   const title = formatMessage({ id: `servicePage.accordion.${k}.title` })
+  //   // "Qué incluye la sesión": si ya tenemos el listado real de
+  //   // sub-servicios (extraído de Koibox) para este servicio, se muestra
+  //   // como lista en vez del texto de ejemplo genérico.
+  //   if (k === 'includes' && hasSubsections) {
+  //     const list = formatMessage({ id: `services.${key}.subsections` }).split('\n')
+  //     return { title, list }
+  //   }
+  //   return { title, body: formatMessage({ id: `servicePage.accordion.${k}.body` }) }
+  // })
 
   return (
     <>
@@ -61,14 +78,29 @@ export default function ServicePage({ service }) {
             <p className={styles.introText}>
               {formatMessage({ id: `services.${key}.desc` })}
             </p>
-            <p className={styles.introItems}>
-              {formatMessage({ id: `services.${key}.items` })}
-            </p>
+            {!hasSubsections && (
+              <p className={styles.introItems}>
+                {formatMessage({ id: `services.${key}.items` })}
+              </p>
+            )}
           </div>
+          {/* Listado real de sub-servicios (nombre + duración + precio,
+              descripción en desplegable) extraído de koibox, en vez del
+              resumen corto de "items" de arriba. */}
+          {hasSubsections && (
+            <div className={`${styles.subsectionsWrap} reveal reveal--up${introInView ? ' is-visible' : ''} reveal--d2`}>
+              <SubsectionList serviceKey={key} items={SERVICE_SUBSECTIONS[key]} />
+            </div>
+          )}
         </div>
       </section>
 
-      <section ref={infoRef} className="section section--alt">
+      {/* Sección "Más información" (acordeón duración/incluye/cuidados/FAQ):
+          oculta temporalmente, no se sabe todavía si se va a usar. No se
+          borra por si se retoma más adelante — para reactivarla, descomentar
+          esto y también el import de Accordion, ACCORDION_KEYS, infoRef/
+          infoInView y accordionItems de arriba. */}
+      {/* <section ref={infoRef} className="section section--alt">
         <div className="container">
           <div className={`${styles.infoHeader} reveal reveal--up${infoInView ? ' is-visible' : ''} reveal--d1`}>
             <span className="label">{formatMessage({ id: 'servicePage.infoLabel' })}</span>
@@ -81,7 +113,7 @@ export default function ServicePage({ service }) {
             <Accordion items={accordionItems} />
           </div>
         </div>
-      </section>
+      </section> */}
 
       <section ref={ctaRef} className="section section--dark">
         <div className={`${styles.cta} container reveal reveal--up${ctaInView ? ' is-visible' : ''} reveal--d1`}>

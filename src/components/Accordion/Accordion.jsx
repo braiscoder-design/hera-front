@@ -4,7 +4,6 @@ import styles from './Accordion.module.css'
 
 /**
  * Lista desplegable simple (una "perla" abierta a la vez).
- * items: [{ title: string, body: string }]
  */
 export default function Accordion({ items }) {
   const [openIndex, setOpenIndex] = useState(null)
@@ -24,8 +23,18 @@ export default function Accordion({ items }) {
               <span>{item.title}</span>
               <IconPlus className={`${styles.icon} ${isOpen ? styles.iconOpen : ''}`} />
             </button>
-            <div className={styles.panel} style={{ maxHeight: isOpen ? '400px' : '0px' }}>
-              <p className={styles.body}>{item.body}</p>
+            {/* maxHeight generoso en vez de medir contenido: hay listas de
+                hasta ~20 sub-servicios (Manicura) que no caben en 400px. */}
+            <div className={styles.panel} style={{ maxHeight: isOpen ? '2400px' : '0px' }}>
+              {item.list ? (
+                <ul className={styles.bodyList}>
+                  {item.list.map((entry) => (
+                    <li key={entry}>{entry}</li>
+                  ))}
+                </ul>
+              ) : (
+                <p className={styles.body}>{item.body}</p>
+              )}
             </div>
           </div>
         )

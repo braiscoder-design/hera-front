@@ -51,7 +51,37 @@
   color: var(--color-text-mid);
 }
 
+/* Listado real de sub-servicios (p. ej. "Qué incluye la sesión" con el
+   menú extraído de Koibox) en vez de un párrafo de texto de ejemplo. */
+.bodyList {
+  padding-block-end: 1.3rem;
+  padding-inline-end: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+.bodyList li {
+  position: relative;
+  padding-inline-start: 1.1rem;
+  font-size: 0.92rem;
+  font-weight: 300;
+  line-height: 1.5;
+  color: var(--color-text-mid);
+}
+.bodyList li::before {
+  content: '';
+  position: absolute;
+  inset-inline-start: 0;
+  top: 0.55em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: var(--color-accent);
+}
+
 @media (max-width: 480px) {
   .trigger { font-size: 0.95rem; padding-block: 0.9rem; }
   .body { padding-inline-end: 0; font-size: 0.88rem; }
+  .bodyList { padding-inline-end: 0; }
+  .bodyList li { font-size: 0.88rem; }
 }
