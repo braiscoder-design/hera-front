@@ -16,10 +16,13 @@ import styles from './Services.module.css'
 const SERVICES = SERVICES_DATA.map((s) => ({
   ...s,
   imgZoom: s.key === 'pedicure',
+  // Encuadre de la foto un poco más abajo dentro de la card (la ceja queda
+  // más centrada verticalmente que con el object-position por defecto).
+  imgOffsetDown: s.key === 'micropigmentation',
 }))
 
 function ServiceCardContent({ formatMessage, service }) {
-  const { key, slug, img, imgZoom } = service
+  const { key, slug, img, imgZoom, imgOffsetDown } = service
   return (
     <>
       <div className={styles.cardImg}>
@@ -28,7 +31,7 @@ function ServiceCardContent({ formatMessage, service }) {
             src={img}
             alt={formatMessage({ id: `services.${key}.title` })}
             loading="lazy"
-            className={imgZoom ? styles.imgZoom : undefined}
+            className={[imgZoom && styles.imgZoom, imgOffsetDown && styles.imgOffsetDown].filter(Boolean).join(' ') || undefined}
           />
         ) : (
           <div className={styles.cardImgPlaceholder} aria-hidden="true">

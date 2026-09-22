@@ -15,8 +15,7 @@ export const SERVICE_SUBSECTIONS = {
     { id: 'nailArtElaborate', duration: 40, price: 30, desc: true },
     { id: 'polygelRepair', duration: 15, price: 8, desc: true },
     { id: 'semiPermanentRepair', duration: 15, price: 6, desc: true },
-    { id: 'semiRemovalHera', duration: 15, price: 10, desc: false },
-    { id: 'semiRemovalOther', duration: 15, price: 10, desc: false },
+    { id: 'semiRemoval', duration: 15, price: 10, desc: false },
     { id: 'polygelRemoval', duration: 30, price: 20, desc: false },
     { id: 'simpleNailDecoration', duration: 15, price: 2, desc: false },
     { id: 'veilTherapy15', duration: 15, price: 15, desc: true },
@@ -73,6 +72,7 @@ export const SERVICE_SUBSECTIONS = {
   pressotherapy: [
     { id: 'pack10', duration: 40, price: 230, desc: true },
     { id: 'pack5', duration: 40, price: 129, desc: true },
+    { id: 'ballancer20', duration: 20, price: 17, desc: false },
     { id: 'ballancer', duration: 40, price: 30, desc: true },
   ],
 }

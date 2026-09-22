@@ -17,7 +17,7 @@ export const SERVICES = [
   { key: 'lashLifting',       slug: 'lifting-pestanas',    img: '/images/service-lashes.jpg' },
   { key: 'lashExtensions',    slug: 'extensiones-pestanas', img: '/images/service-lash-extensions.jpg' },
   { key: 'lips',              slug: 'tratamiento-labios',  img: '/images/service-lips.jpg' },
-  { key: 'micropigmentation', slug: 'micropigmentacion',   img: null },
+  { key: 'micropigmentation', slug: 'micropigmentacion',   img: '/images/service-micropigmentation.jpg' },
   { key: 'pressotherapy',     slug: 'presoterapia',        img: null },
   { key: 'training',          slug: 'formaciones',         img: '/images/service-formaciones.jpg' },
 ]
