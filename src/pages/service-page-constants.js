@@ -17,4 +17,5 @@ export const SUBSECTIONS_SERVICE_KEYS = [
   'lashExtensions',
   'lips',
   'pressotherapy',
+  'micropigmentation',
 ]

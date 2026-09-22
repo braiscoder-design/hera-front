@@ -151,6 +151,10 @@
   "services.micropigmentation.title": "Micropigmentación",
   "services.micropigmentation.desc": "Técnica semipermanente para definir cellas ou outras zonas cun resultado natural e duradeiro.",
   "services.micropigmentation.items": "Cellas · Efecto po · Pelo a pelo",
+  "services.micropigmentation.subsections": "Micropigmentación shading brows\nRepaso anual\nRepaso mensual",
+  "services.micropigmentation.sub.shadingBrows.name": "Micropigmentación shading brows",
+  "services.micropigmentation.sub.annualTouchUp.name": "Repaso anual",
+  "services.micropigmentation.sub.monthlyTouchUp.name": "Repaso mensual",
 
   "services.pressotherapy.title": "Presoterapia",
   "services.pressotherapy.desc": "Tratamento de drenaxe mediante presión controlada que mellora a circulación e reduce a sensación de pernas cansadas.",

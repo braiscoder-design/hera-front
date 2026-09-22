@@ -151,6 +151,10 @@
   "services.micropigmentation.title": "Micropigmentation",
   "services.micropigmentation.desc": "Semi-permanent technique to define brows or other areas with a natural, long-lasting result.",
   "services.micropigmentation.items": "Brows · Powder effect · Hair-stroke",
+  "services.micropigmentation.subsections": "Micropigmentation shading brows\nAnnual touch-up\nMonthly touch-up",
+  "services.micropigmentation.sub.shadingBrows.name": "Micropigmentation shading brows",
+  "services.micropigmentation.sub.annualTouchUp.name": "Annual touch-up",
+  "services.micropigmentation.sub.monthlyTouchUp.name": "Monthly touch-up",
 
   "services.pressotherapy.title": "Pressotherapy",
   "services.pressotherapy.desc": "Drainage treatment using controlled pressure that improves circulation and reduces the feeling of tired legs.",

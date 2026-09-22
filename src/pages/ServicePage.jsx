@@ -74,9 +74,9 @@ export default function ServicePage({ service }) {
         </div>
       </section>
 
-      <p className={styles.pendingNotice}>
-        {formatMessage({ id: 'servicePage.pending' })}
-      </p>
+      {/* Aviso de "página de ejemplo": retirado porque el contenido ya es
+          real, no de muestra. No se borra la clave i18n ni el estilo por
+          si se necesita reactivar para algún servicio pendiente. */}
 
       <section ref={introRef} className="section">
         <div className="container">

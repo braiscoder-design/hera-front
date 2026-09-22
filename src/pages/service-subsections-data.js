@@ -75,4 +75,12 @@ export const SERVICE_SUBSECTIONS = {
     { id: 'ballancer20', duration: 20, price: 17, desc: false },
     { id: 'ballancer', duration: 40, price: 30, desc: true },
   ],
+  // Duración no especificada todavía (sin dato de koibox ni confirmación
+  // del cliente) — se omite y solo se muestra el precio, igual que en
+  // "Decoración efecto glaze".
+  micropigmentation: [
+    { id: 'shadingBrows', duration: null, price: 350, desc: false },
+    { id: 'annualTouchUp', duration: null, price: 200, desc: false },
+    { id: 'monthlyTouchUp', duration: null, price: 70, desc: false },
+  ],
 }

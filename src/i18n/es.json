@@ -151,6 +151,10 @@
   "services.micropigmentation.title": "Micropigmentación",
   "services.micropigmentation.desc": "Técnica semipermanente para definir cejas u otras zonas con un resultado natural y duradero.",
   "services.micropigmentation.items": "Cejas · Efecto polvo · Pelo a pelo",
+  "services.micropigmentation.subsections": "Micropigmentación shading brows\nRepaso anual\nRepaso mensual",
+  "services.micropigmentation.sub.shadingBrows.name": "Micropigmentación shading brows",
+  "services.micropigmentation.sub.annualTouchUp.name": "Repaso anual",
+  "services.micropigmentation.sub.monthlyTouchUp.name": "Repaso mensual",
 
   "services.pressotherapy.title": "Presoterapia",
   "services.pressotherapy.desc": "Tratamiento de drenaje mediante presión controlada que mejora la circulación y reduce la sensación de piernas cansadas.",

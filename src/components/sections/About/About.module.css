@@ -97,17 +97,12 @@
     grid-template-columns: 1fr;
     gap: 2.5rem;
   }
-  .imageFrame {
-    max-width: 100%;
-    /* Cap height so portrait image doesn't dominate on mobile */
-  }
-  .image { aspect-ratio: 4/3; }
-  .imageAccent { display: none; }
+  /* Se oculta la foto solo en móvil (tablet y desktop la siguen viendo). */
+  .imageCol { display: none; }
   .body { max-width: 100%; }
 }
 
 /* ── Small mobile (≤480px) ── */
 @media (max-width: 480px) {
-  .image { aspect-ratio: 3/2; }
   .textCol { gap: 1.2rem; }
 }
