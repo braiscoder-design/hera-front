@@ -82,6 +82,11 @@
   font-weight: 300;
   line-height: 1.65;
   color: var(--color-text-mid);
+  white-space: pre-line;
+}
+
+.desc strong {
+  font-weight: 500;
 }
 
 @media (max-width: 640px) {

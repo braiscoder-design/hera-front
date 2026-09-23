@@ -47,7 +47,12 @@ export default function SubsectionList({ serviceKey, items }) {
           )
         }
 
-        const description = formatMessage({ id: `services.${serviceKey}.sub.${item.id}.desc` })
+        // Algunas descripciones traen fragmentos en negrita y
+        // párrafos separados por salto de línea reales
+        const description = formatMessage(
+          { id: `services.${serviceKey}.sub.${item.id}.desc` },
+          { b: (chunks) => <strong key={String(chunks)}>{chunks}</strong> }
+        )
 
         return (
           <div key={item.id} className={styles.row}>
@@ -61,7 +66,7 @@ export default function SubsectionList({ serviceKey, items }) {
               {meta}
               <IconPlus className={`${styles.icon} ${isOpen ? styles.iconOpen : ''}`} />
             </button>
-            <div className={styles.panel} style={{ maxHeight: isOpen ? '400px' : '0px' }}>
+            <div className={styles.panel} style={{ maxHeight: isOpen ? '700px' : '0px' }}>
               <p className={styles.desc}>{description}</p>
             </div>
           </div>
