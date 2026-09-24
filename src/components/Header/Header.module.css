@@ -115,7 +115,11 @@
   transition: max-height 0.4s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease, margin-block-start 0.35s ease;
 }
 .navServicesMenuOpen {
-  max-height: 20rem;
+  /* Antes 20rem: con las 10 secciones actuales (9 servicios + Formaciones)
+     el contenido real ya rozaba ese límite y "Formaciones", al ser el
+     último enlace del listado, quedaba recortado por el overflow:hidden.
+     Se deja margen de sobra para futuras secciones. */
+  max-height: 30rem;
   opacity: 1;
   margin-block-start: 1rem;
 }
@@ -432,10 +436,15 @@
   }
 }
 
-/* ── Tablet + Mobile: overlay fijo, sin scroll ── */
+/* ── Tablet + Mobile: overlay fijo ── */
 @media (max-width: 1024px) {
   .nav {
-    overflow: hidden;
+    /* Antes "overflow: hidden": con el submenú de Servicios desplegado (10
+       secciones) el contenido puede superar el alto de pantallas pequeñas
+       y no había forma de llegar a los últimos enlaces (p. ej.
+       "Formaciones"). overflow-y: auto permite hacer scroll del overlay
+       cuando no cabe entero, igual que ya hacía la regla base de .nav. */
+    overflow-y: auto;
     gap: 1.3rem;
     padding-block: 5.5rem 2rem;
   }
@@ -444,7 +453,7 @@
     font-size: 0.95rem;
   }
   .navServicesMenu { gap: 0.5rem; }
-  .navServicesMenuOpen { max-height: 14rem; margin-block-start: 0.7rem; }
+  .navServicesMenuOpen { max-height: 24rem; margin-block-start: 0.7rem; }
   .navSubLink { font-size: 0.85rem; }
 }
 
@@ -459,5 +468,5 @@
   .nav { gap: 1.1rem; padding-block: 5rem 1.5rem; }
   .navLink,
   .navServicesToggle { font-size: 0.9rem; }
-  .navServicesMenuOpen { max-height: 13rem; }
+  .navServicesMenuOpen { max-height: 22rem; }
 }

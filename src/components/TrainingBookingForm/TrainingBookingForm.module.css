@@ -1,0 +1,159 @@
+.wrap {
+  max-width: 42rem;
+  margin-inline: auto;
+  margin-block-start: var(--spacing-lg);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: var(--spacing-md);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.title {
+  font-family: var(--font-serif);
+  font-weight: 300;
+  font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+  color: var(--color-text);
+  text-align: center;
+  margin-block-end: 0.3rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  /* Reset del <fieldset> nativo (borde/padding) usado en las preguntas
+     de opción única, para que se comporte igual que el resto de campos. */
+  border: none;
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+}
+
+.label {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  color: var(--color-text-mid);
+  padding: 0;
+}
+
+.required {
+  color: var(--color-accent);
+}
+
+.input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  font-weight: 300;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  transition: border-color var(--transition);
+}
+.input:focus {
+  outline: none;
+  border-color: var(--color-accent);
+}
+.input::placeholder {
+  color: var(--color-text-light);
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 4.5rem;
+  line-height: 1.6;
+}
+
+.inputError {
+  border-color: var(--color-error);
+}
+
+.error {
+  font-size: 0.76rem;
+  font-weight: 400;
+  color: var(--color-error);
+}
+
+/* ── Preguntas de opción única ── */
+.radioRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 1.4rem;
+  margin-block-start: 0.3rem;
+}
+
+.radioOption {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  font-weight: 300;
+  color: var(--color-text);
+  cursor: pointer;
+}
+.radioOption input[type='radio'] {
+  accent-color: var(--color-accent);
+  width: 1rem;
+  height: 1rem;
+  cursor: pointer;
+}
+
+/* ── Botón de envío ── */
+.submit {
+  align-self: center;
+  margin-block-start: 0.5rem;
+  padding: 0.9rem 2.4rem;
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-bg);
+  background-color: var(--color-text);
+  border-radius: var(--radius-sm);
+  transition: background-color var(--transition), color var(--transition);
+}
+.submit:hover {
+  background-color: var(--color-accent);
+  color: var(--color-text);
+}
+
+/* ── Confirmación tras validar ── */
+.success {
+  text-align: center;
+  padding: var(--spacing-md);
+  background-color: var(--color-accent-soft);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.successTitle {
+  font-family: var(--font-serif);
+  font-weight: 300;
+  font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+  color: var(--color-text);
+}
+
+.successBody {
+  margin-block-start: 0.6rem;
+  font-size: 0.92rem;
+  font-weight: 300;
+  color: var(--color-text-mid);
+  line-height: 1.65;
+}
+
+@media (max-width: 480px) {
+  .form { padding: var(--spacing-md) 1.1rem; gap: 1.25rem; }
+  .submit { width: 100%; }
+}

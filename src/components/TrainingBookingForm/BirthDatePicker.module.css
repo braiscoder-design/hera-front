@@ -1,0 +1,100 @@
+.trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  font-weight: 300;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: border-color var(--transition);
+}
+.trigger:hover {
+  border-color: var(--color-accent);
+}
+.trigger:focus-visible {
+  outline: none;
+  border-color: var(--color-accent);
+}
+
+.triggerError {
+  border-color: var(--color-error);
+}
+
+.value {
+  color: var(--color-text);
+}
+
+.placeholder {
+  color: var(--color-text-light);
+}
+
+.icon {
+  flex-shrink: 0;
+  color: var(--color-text-light);
+}
+
+.error {
+  font-size: 0.76rem;
+  font-weight: 400;
+  color: var(--color-error);
+}
+
+/* ── Diálogo del calendario ── */
+.dialog {
+  /* El reset global (*, *::before, *::after { margin: 0 }) es una regla
+     de autor y gana por origen de cascada a la hoja del navegador, que
+     centra el <dialog> modal con margin:auto — sin esto, el diálogo se
+     queda pegado a la esquina superior izquierda en vez de centrado. */
+  margin: auto;
+  padding: var(--spacing-md);
+  max-width: 22rem;
+  width: calc(100% - 2rem);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: 0 12px 32px rgba(42, 37, 32, 0.18);
+}
+.dialog::backdrop {
+  background-color: rgba(42, 37, 32, 0.45);
+}
+
+.dialogHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-block-end: 0.75rem;
+}
+
+.dialogTitle {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  color: var(--color-text-mid);
+}
+
+.closeBtn {
+  font-size: 1.4rem;
+  line-height: 1;
+  color: var(--color-text-light);
+  transition: color var(--transition);
+}
+.closeBtn:hover {
+  color: var(--color-accent);
+}
+
+/* Tema del calendario (DayPicker) con los colores de Hera. */
+.calendar:global(.rdp-root) {
+  --rdp-accent-color: var(--color-accent);
+  --rdp-accent-background-color: var(--color-accent-soft);
+  font-family: var(--font-sans);
+  margin: 0;
+}

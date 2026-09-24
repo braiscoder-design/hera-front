@@ -15,6 +15,10 @@
   --color-accent-soft:  #F0E6D3;
   --color-blush:        #E8D5CE;
   --color-sage:         #C8D5C0;
+  /* Tono de error/aviso: rojo terracota que encaja con la paleta cálida
+     en vez de un rojo puro de sistema. Usado por el formulario de
+     reserva de Formaciones (validación de campos). */
+  --color-error:        #B3564D;
 
   --font-serif:   'Cormorant Garamond', Georgia, serif;
   --font-sans:    'Inter', system-ui, sans-serif;

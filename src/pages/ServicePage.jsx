@@ -7,6 +7,7 @@ import { useInView } from '../hooks/useInView'
 // import Accordion from '../components/Accordion/Accordion'
 import ServiceIcon from '../components/ServiceIcon/ServiceIcon'
 import SubsectionList from '../components/SubsectionList/SubsectionList'
+import TrainingBookingForm from '../components/TrainingBookingForm/TrainingBookingForm'
 import { IconWhatsapp, IconCalendar } from '../icons'
 // import { ACCORDION_KEYS } from './service-page-constants'
 import { SUBSECTIONS_SERVICE_KEYS } from './service-page-constants'
@@ -96,6 +97,12 @@ export default function ServicePage({ service }) {
           {hasSubsections && (
             <div className={`${styles.subsectionsWrap} reveal reveal--up${introInView ? ' is-visible' : ''} reveal--d2`}>
               <SubsectionList serviceKey={key} items={SERVICE_SUBSECTIONS[key]} />
+            </div>
+          )}
+          {/* Formulario de reserva de plaza, solo en Formaciones. */}
+          {key === 'training' && (
+            <div className={`reveal reveal--up${introInView ? ' is-visible' : ''} reveal--d2`}>
+              <TrainingBookingForm />
             </div>
           )}
         </div>
