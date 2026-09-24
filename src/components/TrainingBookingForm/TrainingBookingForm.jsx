@@ -1,10 +1,15 @@
 import { useState } from 'react'
 import { useIntl } from 'react-intl'
+import emailjs from '@emailjs/browser'
+import { format, parse } from 'date-fns'
 import {
   TRAINING_FORM_FIELDS,
   YES_NO_OPTIONS,
   ROLE_OPTIONS,
   MOTIVATION_OPTIONS,
+  EMAILJS_SERVICE_ID,
+  EMAILJS_TEMPLATE_ID,
+  EMAILJS_PUBLIC_KEY,
 } from './training-booking-form-constants'
 import BirthDatePicker from './BirthDatePicker'
 import styles from './TrainingBookingForm.module.css'
@@ -41,6 +46,48 @@ function isFieldVisible(field, values) {
   return values[field.dependsOn.field] === field.dependsOn.equals
 }
 
+// Escapa el texto que ha escrito la persona antes de insertarlo como HTML
+// en el email (el template de EmailJS usa {{{message}}} sin escapar, para
+// poder darle formato) — evita que un campo de texto pueda inyectar HTML.
+function escapeHtml(str) {
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;')
+}
+
+// Convierte las respuestas en un bloque HTML (pregunta + respuesta), en el
+// idioma en el que se ha rellenado el formulario, para mandarlo como
+// cuerpo del email vía la variable {{{message}}} del template de EmailJS.
+// Las respuestas de tipo radio y la fecha se traducen/formatean; los
+// campos condicionales ocultos (p.ej. salonInfo si hasSalon = "no") se omiten.
+function buildEmailMessage(values, formatMessage) {
+  const blocks = []
+  for (const field of TRAINING_FORM_FIELDS) {
+    if (!isFieldVisible(field, values)) continue
+
+    const label = formatMessage({ id: `trainingForm.fields.${field.id}.label` })
+    let answer = values[field.id]
+
+    if (field.kind === 'radio') {
+      answer = formatMessage({ id: `trainingForm.options.${field.optionsGroup}.${answer}` })
+    } else if (field.kind === 'date' && answer) {
+      answer = format(parse(answer, 'yyyy-MM-dd', new Date()), 'dd/MM/yyyy')
+    }
+
+    const safeAnswer = escapeHtml(answer).replace(/\n/g, '<br>')
+    blocks.push(
+      `<p style="margin:0 0 16px;">` +
+        `<span style="display:block;font:600 11px/1.4 Arial,sans-serif;letter-spacing:.05em;text-transform:uppercase;color:#6B6259;margin-bottom:3px;">${escapeHtml(label)}</span>` +
+        `<span style="display:block;font:400 15px/1.6 Georgia,serif;color:#2A2520;">${safeAnswer}</span>` +
+      `</p>`
+    )
+  }
+  return blocks.join('')
+}
+
 /**
  * Formulario de reserva de plaza para Formaciones, con los mismos campos
  * que el formulario de referencia (eia-studio.com/formaciones), quitando
@@ -48,10 +95,11 @@ function isFieldVisible(field, values) {
  * concretas anunciadas) y generalizando la pregunta de "experiencia
  * previa" para no asumir una técnica concreta.
  *
- * Sin backend propio todavía: al validar correctamente, se muestra un
- * mensaje de confirmación en la propia página, pero el envío no llega a
- * ningún sitio real — falta decidir a dónde debe llegar (email, WhatsApp,
- * un servicio de formularios, etc.) para conectarlo de verdad.
+ * Sin backend propio: el envío se hace directamente desde el navegador
+ * con EmailJS (@emailjs/browser), que manda los datos como email. El
+ * destinatario real se configura en el template de EmailJS (no en este
+ * código) — ver EMAILJS_SERVICE_ID/TEMPLATE_ID/PUBLIC_KEY en
+ * training-booking-form-constants.js para la configuración pendiente.
  */
 export default function TrainingBookingForm() {
   const { formatMessage } = useIntl()
@@ -59,6 +107,8 @@ export default function TrainingBookingForm() {
   const [errors, setErrors] = useState({})
   const [attempted, setAttempted] = useState(false)
   const [submitted, setSubmitted] = useState(false)
+  const [sending, setSending] = useState(false)
+  const [submitError, setSubmitError] = useState(false)
 
   const setField = (id, value) => {
     setValues((prev) => {
@@ -132,14 +182,14 @@ export default function TrainingBookingForm() {
     return next
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     setAttempted(true)
+    setSubmitError(false)
     const nextErrors = validateAll()
     setErrors(nextErrors)
-    if (Object.keys(nextErrors).length === 0) {
-      setSubmitted(true)
-    } else {
+
+    if (Object.keys(nextErrors).length > 0) {
       const firstErrorId = TRAINING_FORM_FIELDS.find((f) => nextErrors[f.id])?.id
       if (firstErrorId) {
         document.getElementById(`trainingForm-${firstErrorId}`)?.scrollIntoView({
@@ -147,6 +197,28 @@ export default function TrainingBookingForm() {
           block: 'center',
         })
       }
+      return
+    }
+
+    setSending(true)
+    try {
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        {
+          from_name: `${values.firstName} ${values.lastName}`.trim(),
+          reply_to: values.email,
+          subject: `Nueva reserva de formación — ${values.firstName} ${values.lastName}`,
+          message: buildEmailMessage(values, formatMessage),
+        },
+        { publicKey: EMAILJS_PUBLIC_KEY }
+      )
+      setSubmitted(true)
+    } catch (err) {
+      console.error('Error enviando el formulario de Formaciones:', err)
+      setSubmitError(true)
+    } finally {
+      setSending(false)
     }
   }
 
@@ -289,8 +361,14 @@ export default function TrainingBookingForm() {
           )
         })}
 
-        <button type="submit" className={styles.submit}>
-          {formatMessage({ id: 'trainingForm.submit' })}
+        {submitError && (
+          <p className={styles.submitError}>
+            {formatMessage({ id: 'trainingForm.errors.submitFailed' })}
+          </p>
+        )}
+
+        <button type="submit" className={styles.submit} disabled={sending}>
+          {formatMessage({ id: sending ? 'trainingForm.submitting' : 'trainingForm.submit' })}
         </button>
       </form>
     </div>

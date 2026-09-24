@@ -1,5 +1,12 @@
 // Constantes de datos del formulario de reserva de Formaciones
 
+// Envío por email vía EmailJS (sin backend propio). El destinatario real
+// se configura en el propio template de EmailJS, no aquí — esto son solo
+// los identificadores de la cuenta (cuenta de Brais, temporal).
+export const EMAILJS_SERVICE_ID = 'service_zqgxraq'
+export const EMAILJS_TEMPLATE_ID = 'template_ani26xg'
+export const EMAILJS_PUBLIC_KEY = 'azGbDPw5W2yeb1-0V'
+
 export const YES_NO_OPTIONS = ['yes', 'no']
 export const ROLE_OPTIONS = ['selfEmployed', 'ceo', 'employee', 'notWorking', 'other']
 export const MOTIVATION_OPTIONS = ['learnTechnique', 'startBusiness', 'clientsAsked', 'other']
